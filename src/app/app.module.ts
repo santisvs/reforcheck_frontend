@@ -8,19 +8,31 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UnitPageModule } from './pages/unit/unit.module';
+
+import { MenuComponent } from './components/menu/menu.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    MenuComponent
+  ],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    UnitPageModule,
     AppRoutingModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  exports:[
   ],
   bootstrap: [AppComponent]
 })
