@@ -1,9 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="logoHeader">
+    <img alt="logo"  width="70%" style="position: relative" src="../../../assets/logo_reforcheck.png">
+  </div>
+  <form class="formLogin">
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
 
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <a [routerLink]="['/forgot-password']" class="small-text" color="medium">Forgot Password?</a>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <a [routerLink]="['/register']" class="small-text" color="medium">Register</a>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

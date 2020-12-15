@@ -11,14 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UnitPageModule } from './pages/unit/unit.module';
 
-import { MenuComponent } from './components/menu/menu.component';
+import { MenuComponent } from './components/shared/menu/menu.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent
+    AppComponent
   ],
   entryComponents: [
   ],
