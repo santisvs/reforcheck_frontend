@@ -1,4 +1,36 @@
 
-<p>
-  lista de unidades
-</p>
+<ion-list>
+  <ion-list-header>
+    Recent Conversations
+  </ion-list-header>
+  
+  <ion-item button *ngFor="let unit of units" class="unit-item" (click)='getDetailServicio(unit.id)'>
+    <ion-label class="ion-text-wrap">
+      <ion-text color="primary">
+        <h3>{{unit.name}}</h3>
+      </ion-text>
+      <p>{{unit.description}}</p>
+      <p>Unidad: {{unit.measurementUnit}}</p>
+      <ion-text color="secondary">
+        <p>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-note>{{unit.price}}</ion-note>
+              </ion-col>
+              <ion-col>
+                <ion-note>{{unit.hours}}</ion-note>
+              </ion-col>
+              <ion-col>
+                <ion-note>{{unit.performance}}</ion-note>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </p>
+      </ion-text>
+    </ion-label>
+</ion-item>
+
+  
+
+</ion-list>

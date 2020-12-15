@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { UnitPageModule } from './pages/unit/unit.module';
 
 import { MenuComponent } from './components/menu/menu.component';
@@ -25,9 +26,11 @@ import { MenuComponent } from './components/menu/menu.component';
     BrowserModule,
     IonicModule.forRoot(),
     UnitPageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
+    HttpClientModule,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
