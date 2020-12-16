@@ -1,34 +1,56 @@
+
 <ion-content>
-  <div class="logoHeader">
-    <img alt="logo"  width="70%" style="position: relative" src="../../../assets/logo_reforcheck.png">
-  </div>
-  <form class="formLogin">
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+      <div class="content-titular">
+        <div class="titular">
+          <div class="logoHeader">
+            <img alt="logo"  width="70%" style="position: relative" src="../../../assets/logo_reforcheck.png">
+          </div>
+          Bienvenido a la utopia de una reforma sin problemas
+        </div>
+        <div class="content">
+          <div class="logoHeader">
+            <img alt="logo"  width="70%" style="position: relative" src="../../../assets/logo_reforcheck.png">
+          </div>
+          <form class="formLogin">
+            <ion-item lines="full">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="text" required></ion-input>
+            </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" required></ion-input>
+            </ion-item>
+            
+            <ion-grid [fixed]="true">
+              <ion-row>
+                <ion-col>
+                  <ion-button type="submit" color="danger" expand="block">Iniciar sesión</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <a [routerLink]="['/forgot-password']" class="small-text" color="medium">¿Olvidaste tu contraseña?</a>
+                </ion-col>
+              </ion-row>
+              <hr>
+                <ion-row>
+                  <ion-col>
+                    <p>¿No tienes una cuenta? </p><a [routerLink]="['/register']" class="small-text" color="medium">Regístrate</a>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <a [routerLink]="['/forgot-password']" class="small-text" color="medium">Forgot Password?</a>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <a [routerLink]="['/register']" class="small-text" color="medium">Register</a>
-      </ion-col>
-    </ion-row>
-  </form>
+          </form> 
+        </div>
+      </div>
+      <div class="footer">
+        <ion-row>
+          <ion-col>&copy; 2020 Reforcheck</ion-col>
+          <ion-col><a [routerLink]="['/condiciones_uso']" class="small-text" color="medium">Condiciones de uso</a></ion-col>
+          <ion-col><a [routerLink]="['/politica_privacidad']" class="small-text" color="medium">Política de privacidad</a></ion-col>
+          <ion-col><a [routerLink]="['/politica_cookies']" class="small-text" color="medium">Política de cookies</a></ion-col>
+        </ion-row>
+         
+      </div>
 </ion-content>

@@ -1,10 +1,176 @@
-.logoHeader {
-    text-align: center !important;
-    margin-top: 40% !important;
-  }
+ion-content{
+  --ion-background-color:#ffffff;
+  min-height: 100%;
+}
+
+.content-titular{
+  margin:auto;
+  height: 90vh;
+  position: relative;
+}
+
+.footer{
+  margin:auto;
+  display: block;
+  height: 10vh;
+  max-width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.footer ion-row{
+  padding-top: 0;
+}
+
+.footer ion-row ion-col{
+  font-size: 7pt;
+  color:grey;
+}
+
+.footer ion-row ion-col a{
+  color:grey;
+  font-size: 7pt;
+  text-decoration: none;
+}
+
+.footer ion-row ion-col a:hover{
+  text-decoration: underline;
+}
+
+.titular {
+  display: none;
+}
+
+.titular .logoHeader {
+  display: none;
+}
+
+.content {
+  padding: 5%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80vw;
+  max-width: 500px;
+  margin: auto;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5%;
+}
+
+.content .logoHeader {
+  display: block;
+  text-align: center !important;
+}
+
+ion-item{
+  --ion-background-color: rgb(233, 233, 233);
+}
+
+hr {
+  height: 1px;
+  background-color: rgb(189, 189, 189);
+}
+
+a,p{
+  font-size: small;
+  text-decoration: none;
+}
+
+.texto-link{
+  text-align: center;
+    margin: 0 !important;;
+}
+
+.image {
+  background-image: url("../../../assets/img/fullscreen_home.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 .formLogin {
     text-align: center !important;
-    margin-left: 10%;
-    width: 80% !important;
+}
+
+  
+
+@media only screen and (min-width: 876px){
+  
+  ion-content{
+    --ion-background-color:#ffffff;
+    min-height: 100%;
   }
+
+  .content-titular{
+    margin:auto;
+    width: 850px;
+    height: 80vh;
+    position: relative;
+  }
+  .footer{
+    margin:auto;
+    width: 850px;
+    display: block;
+    height: 18vh;
+    max-width: 850px;
+    text-align: center;
+    position: relative;
+  }
+
+  .footer ion-row{
+    padding-top: 5vh;
+  }
+
+  .footer ion-row ion-col{
+    font-size: 10pt;
+    color:grey;
+  }
+
+  .footer ion-row ion-col a{
+    color:grey;
+    font-size: 10pt;
+    text-decoration: none;
+  }
+
+  .footer ion-row ion-col a:hover{
+    text-decoration: underline;
+  }
+
+  .titular {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 28px;
+      width: 400px;
+      height: 25vh;
+      float:left;
+      margin: 30vh auto auto 5%;
+      position: relative;
+  }
+
+  .content {
+    float:right;
+    padding: 3%;
+    margin: 4vh 10% auto auto;
+    position: relative;
+    max-width: 300px;
+    background-color: rgb(235, 232, 232);
+    border-radius: 5%;
+  }
+
+  .titular .logoHeader {
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .content .logoHeader {
+    display: none;
+  }
+
+}
