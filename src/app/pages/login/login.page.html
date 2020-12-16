@@ -11,21 +11,21 @@
           <div class="logoHeader">
             <img alt="logo"  width="70%" style="position: relative" src="../../../assets/logo_reforcheck.png">
           </div>
-          <form class="formLogin">
+          <form class="formLogin" [formGroup]="loginForm">
             <ion-item lines="full">
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input name="username" type="text" formControlName="username" required></ion-input>
             </ion-item>
 
             <ion-item lines="full">
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" required></ion-input>
+              <ion-input name="password" type="password" formControlName="password" required></ion-input>
             </ion-item>
             
             <ion-grid [fixed]="true">
               <ion-row>
                 <ion-col>
-                  <ion-button type="submit" color="danger" expand="block">Iniciar sesión</ion-button>
+                  <ion-button type="submit" color="danger" expand="block" (click)="sendLogin(loginForm.value)">Iniciar sesión</ion-button>
                 </ion-col>
               </ion-row>
               <ion-row>

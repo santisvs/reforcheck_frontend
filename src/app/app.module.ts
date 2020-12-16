@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicStorageModule } from "@ionic/storage";
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -27,9 +28,11 @@ import { HeaderComponent } from './components/shared/header/header.component';
     IonicModule.forRoot(),
     UnitPageModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
+    IonicStorageModule,
     HttpClientModule,
     StatusBar,
     SplashScreen,
