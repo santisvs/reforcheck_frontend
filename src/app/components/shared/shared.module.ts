@@ -2,19 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    MenuComponent
+    HeaderComponent
   ],
   imports: [
     CommonModule
   ],
   exports:[
-    HeaderComponent,
-    MenuComponent
+    HeaderComponent
   ]
 })
 export class SharedModule { }

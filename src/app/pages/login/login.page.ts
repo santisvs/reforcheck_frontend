@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { LoginService } from 'src/app/services/login/login.service';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private alertCtrl: AlertController,
-    private storage: Storage
+    private storage: Storage,
   ) { 
     this.loginForm = this.formBuilder.group({
       username: '',
@@ -36,14 +36,16 @@ export class LoginPage implements OnInit {
       this.presentAlert('Comprobar que los campos obligatorios esten rellenos correctamente');
     } else {
       this.loginService.loginUser(loginData).subscribe(
-        result => {
-          console.log("token: " + result)
+        (result:any) => {
+          this.storage.set('access_token', result.access_token);
+          this.storage.set('type_token', result.token_type);
+          this.storage.set('refresh_token', result.refresh_token);
+          this.router.navigate(['/unit']);
         },
         error => {
-          this.presentAlert(<any>error);
+          this.presentAlert("Error en el login. Revise los datos y vuelva a intentarlo");
         }
       );
-      console.log("token: " + this.token )
     }
   }
 

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UnitPageRoutingModule } from './unit-routing.module';
+import { SharedModule } from '../../components/shared/shared.module';
 import { UnitListComponent } from '../../components/unit-list/unit-list.component';
 import { UnitListAllComponent } from '../../components/unit-list-all/unit-list-all.component';
 
@@ -22,7 +23,8 @@ import { UnitPage } from './unit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    UnitPageRoutingModule
+    UnitPageRoutingModule,
+    SharedModule,
   ],
   exports:[
   ]

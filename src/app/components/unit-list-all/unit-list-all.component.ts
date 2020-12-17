@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Unit } from 'src/app/models/unit';
+import { UnitInterface } from 'src/app/models/unit';
 import { UnitService } from 'src/app/services/unit/unit.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UnitService } from 'src/app/services/unit/unit.service';
 })
 export class UnitListAllComponent implements OnInit {
 
-  public units : Unit[];
+  public units : UnitInterface[];
   public errorMensaje: any;
 
   constructor(

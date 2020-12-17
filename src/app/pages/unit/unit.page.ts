@@ -9,7 +9,7 @@ export class UnitPage implements OnInit {
 
   private title: any;
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit() {
     this.title = "Unidades";

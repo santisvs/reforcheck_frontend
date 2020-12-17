@@ -8,7 +8,7 @@ import { CONFIG } from '../configuracion';
 })
 export class UnitService {
 
-  public url: String;
+  public url: string;
 
   constructor(private _http: HttpClient) { 
     this.url = CONFIG.url;

@@ -6,5 +6,7 @@
 
 export var CONFIG = {
     url: 'http://localhost:8090/api/',
-    ip: '127.0.0.1'
+    ip: '127.0.0.1',
+    frontend_client: 'frontendapp',
+    frontend_client_pass: '1234'
 }

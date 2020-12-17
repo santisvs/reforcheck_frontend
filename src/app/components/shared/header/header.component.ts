@@ -9,10 +9,31 @@ import { ActivatedRoute } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public section: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  public selectedIndex = 0;
+  public appPages = [
+    {
+      title: 'Presupuesto',
+      url: 'budget',
+      icon: 'warning'
+    },
+    {
+      title: 'Unidades',
+      url: 'unit',
+      icon: 'warning'
+    }
+  ];
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
+  constructor(private activatedRoute: ActivatedRoute) { 
+
+  }
 
   ngOnInit() {
     this.section = this.activatedRoute.snapshot.paramMap.get('id');
+    const path = window.location.pathname.split('folder/')[1];
+    if (path !== undefined) {
+      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+    }
   }
 
 }
