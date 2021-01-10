@@ -14,9 +14,10 @@ import { VentanaInterface } from "./estancia/ventana";
 import { TresdInterface } from "./estancia/commons/tresd";
 
 export interface EstanciaInterface {
-    id?: String;
-    tipo?: String;
-    subtipo ?: String;
+    id?: string;
+    nombre?: string;
+    tipo?: string;
+    subtipo ?: string;
     medida ?: TresdInterface;
     ventanas ?: Array<VentanaInterface>;
     puertas ?: Array<PuertaInterface>;

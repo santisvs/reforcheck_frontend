@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PlantasPageRoutingModule } from './plantas-routing.module';
 
 import { PlantasPage } from './plantas.page';
+import { SharedModule } from 'src/app/components/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PlantasPageRoutingModule
+    PlantasPageRoutingModule,
+    SharedModule
   ],
   declarations: [PlantasPage]
 })

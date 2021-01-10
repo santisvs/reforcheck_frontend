@@ -29,6 +29,7 @@ export class PresupuestoService {
       nombre_reforchecker: '',
       plantas: []
     }
+    this.crearPlanta();
     return this.propiedad;
   }
 
@@ -39,7 +40,8 @@ export class PresupuestoService {
   crearPlanta(){
     let numPlantas = this.propiedad.plantas.length + 1;
     let plantaVacia : PlantaInterface = {
-      nombre: "planta " + numPlantas,
+      nombre: "",
+      numero: "planta " + numPlantas,
       estancias: []
     };
     this.propiedad.plantas.push(plantaVacia);
@@ -47,99 +49,190 @@ export class PresupuestoService {
 
   crearEstancia(_planta: string, _tipo: string){
     this.propiedad.plantas.forEach(planta => {
-      if(planta.nombre == _planta){
+      if(planta.numero == _planta){
         if(_tipo == "HUMEDA"){
-          let estanciaVacia : EstanciaHumedaInterface = {
-
+          let estanciaHumedaVacia : EstanciaHumedaInterface = {
+            tipo : '',
+            subtipo : '',
+            medida  : {
+                    alto : 0,
+                    largo : 0,
+                    ancho : 0,
+                    unidad : Unidad.SIN_DEFINIR
+            },
+            ventanas : [],
+            puertas : [],
+            armarios : [],
+            radiadores : [],
+            climatizacion : [],
+            mobiliario_obra : {
+                    cantidad : 0,
+                    unidad : Unidad.SIN_DEFINIR,
+                    desmontable : false
+            },
+            techo : {
+                    falso_techo : false,
+                    moldura : false,
+                    demuele : false,
+            },
+            revestimiento : {
+                    medida : {
+                      alto : 0,
+                      largo : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+                    ceramico : false,
+                    friso : false,
+                    panelado : false,
+                    moldura : false,
+                    demuele : false,
+            },
+            solado : {
+                    tipo : '',
+                    medida : {
+                      alto : 0,
+                      largo : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+            },
+            rodapie : {
+                    tipo : '',
+                    alto : {
+                      tamano : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+                    largo : {
+                      tamano : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+                    ancho : {
+                      tamano : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+            },
+            pintura : {
+                    fisuracion : Cantidad.SIN_DEFINIR,
+                    papel_pintado : false,
+                    gotelet : false,
+                    raspado : false,
+                    color : '',
+                    acabado : '',
+            },
+            instalacion : {
+                    medida : {
+                      alto : 0,
+                      largo : 0,
+                      unidad : Unidad.SIN_DEFINIR
+                    },
+                    caja_registro : 0,
+                    interruptores_conmutados : 0,
+                    interruptores_no_conmutados : 0,
+                    enchufes : 0,
+                    toma_tv : 0,
+                    toma_telef : 0,
+                    toma_datos : 0,
+            },
+            iluminacion : {
+                    empotrada : false,
+                    focos : 0,
+                    down_lights : 0,
+                    tiras_led : []
+            },
+            bañeras : [],
+            duchas : [],
+            lavabos : [],
+            inodoros : [],
+            bidets : []
           }
+          planta.estancias.push(estanciaHumedaVacia);
         } else {
           let estanciaVacia : EstanciaInterface = {
-    tipo : '',
-    subtipo : '',
-    medida  : {
-      alto : 0,
-      largo : 0,
-      ancho : 0,
-      unidad : Unidad.SIN_DEFINIR
-          },
-    ventanas : [],
-    puertas : [],
-    armarios : [],
-    radiadores : [],
-    climatizacion : [],
-    mobiliario_obra : {
-      cantidad : 0,
-      unidad : Unidad.SIN_DEFINIR,
-      desmontable : false
-    },
-    techo : {
-      falso_techo : false,
-      moldura : false,
-      demuele : false,
-    },
-    revestimiento : {
-      medida : {
-        alto : 0,
-      largo : 0,
-      unidad : Unidad.SIN_DEFINIR
-      },
-    ceramico : false,
-    friso : false,
-    panelado : false,
-    moldura : false,
-    demuele : false,
-    },
-    solado : {
-      tipo : '',
-    medida : {
-      alto : 0,
-    largo : 0,
-    unidad : Unidad.SIN_DEFINIR
-    },
-    },
-    rodapie : {
-      tipo : '',
-    alto : {
-      tamano : 0,
-      unidad : Unidad.SIN_DEFINIR
-    },
-    largo : {
-      tamano : 0,
-      unidad : Unidad.SIN_DEFINIR
-    },
-    ancho : {
-      tamano : 0,
-      unidad : Unidad.SIN_DEFINIR
-    },
-    },
-    pintura : {
-      fisuracion : Cantidad.SIN_DEFINIR,
-    papel_pintado : false,
-    gotelet : false,
-    raspado : false,
-    color : '',
-    acabado : '',
-    },
-    instalacion : {
-      medida : {
-        alto : 0,
-      largo : 0,
-      unidad : Unidad.SIN_DEFINIR
-      },
-    caja_registro : 0,
-    interruptores_conmutados : 0,
-    interruptores_no_conmutados : 0,
-    enchufes : 0,
-    toma_tv : 0,
-    toma_telef : 0,
-    toma_datos : 0,
-    },
-    iluminacion : {
-      empotrada : false,
-    focos : 0,
-    down_lights : 0,
-    tiras_led : []
-    }
+              tipo : '',
+              subtipo : '',
+              medida  : {
+                      alto : 0,
+                      largo : 0,
+                      ancho : 0,
+                      unidad : Unidad.SIN_DEFINIR
+              },
+              ventanas : [],
+              puertas : [],
+              armarios : [],
+              radiadores : [],
+              climatizacion : [],
+              mobiliario_obra : {
+                      cantidad : 0,
+                      unidad : Unidad.SIN_DEFINIR,
+                      desmontable : false
+              },
+              techo : {
+                      falso_techo : false,
+                      moldura : false,
+                      demuele : false,
+              },
+              revestimiento : {
+                      medida : {
+                        alto : 0,
+                        largo : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+                      ceramico : false,
+                      friso : false,
+                      panelado : false,
+                      moldura : false,
+                      demuele : false,
+              },
+              solado : {
+                      tipo : '',
+                      medida : {
+                        alto : 0,
+                        largo : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+              },
+              rodapie : {
+                      tipo : '',
+                      alto : {
+                        tamano : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+                      largo : {
+                        tamano : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+                      ancho : {
+                        tamano : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+              },
+              pintura : {
+                      fisuracion : Cantidad.SIN_DEFINIR,
+                      papel_pintado : false,
+                      gotelet : false,
+                      raspado : false,
+                      color : '',
+                      acabado : '',
+              },
+              instalacion : {
+                      medida : {
+                        alto : 0,
+                        largo : 0,
+                        unidad : Unidad.SIN_DEFINIR
+                      },
+                      caja_registro : 0,
+                      interruptores_conmutados : 0,
+                      interruptores_no_conmutados : 0,
+                      enchufes : 0,
+                      toma_tv : 0,
+                      toma_telef : 0,
+                      toma_datos : 0,
+              },
+              iluminacion : {
+                      empotrada : false,
+                      focos : 0,
+                      down_lights : 0,
+                      tiras_led : []
+              }
           }
           planta.estancias.push(estanciaVacia);
         }

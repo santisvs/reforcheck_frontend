@@ -1,9 +1,96 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>plantas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
-<ion-content>
+<ion-content fullscreen class="ion-padding">
+  <form #fDatosPlantas="ngForm" (ngSubmit)="validarDatosPlantas(fDatosPlantas)">
 
+            <ion-button size="small" (click)="crearPlanta()">
+              <ion-icon name="add-outline"></ion-icon>
+              Añadir planta
+            </ion-button>
+
+            <ion-card *ngFor="let planta of propiedad.plantas">
+              <ion-card-header>
+                <ion-card-subtitle>
+                </ion-card-subtitle>
+                <ion-card-title>{{ planta.numero }}: {{planta.nombre}} {{fDatosPlantas.valid}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+
+                      <ion-button size="small" (click)="crearEstancia(planta.numero,'HUMEDA')">
+                        <ion-icon name="add-outline"></ion-icon>
+                        Añadir estancia
+                      </ion-button>
+
+
+                      <ion-item>
+                        <ion-label position="floating">Nombre</ion-label>
+                        <ion-input type="username" name="nombre" [(ngModel)]="planta.nombre" required></ion-input>
+                      </ion-item>
+
+
+                    <ion-card *ngFor="let estancia of planta.estancias">
+                      <ion-card-header>
+                        <ion-card-subtitle>
+                        </ion-card-subtitle>
+                        <ion-card-title>{{ estancia.nombre }}</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col size-lg="12" size-xs="12" size-md="12">
+                              <ion-item>
+                                <ion-label position="floating">Nombre</ion-label>
+                                <ion-input type="street-address" name="nombre" [(ngModel)]="estancia.nombre" required></ion-input>
+                              </ion-item>
+                            </ion-col>
+                            <ion-col size-lg="6" size-xs="12" size-md="6">
+                              <ion-item>
+                                <ion-label position="floating">Tipo</ion-label>
+                                <ion-select value="" name="tipo" [(ngModel)]="estancia.tipo" required>
+                                  <ion-select-option value="">Selecciona...</ion-select-option>
+                                  <ion-select-option value="seca">Seca</ion-select-option>
+                                  <ion-select-option value="humeda">Humeda</ion-select-option>
+                                </ion-select>
+                              </ion-item>
+                            </ion-col>
+                            <ion-col size-lg="3" size-xs="12" size-md="6">
+                              <ion-item>
+                                <ion-label position="floating">Subtipo</ion-label>
+                                  <div *ngIf="estancia.tipo == seca">
+                                    <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
+                                      <ion-select-option value="">Selecciona...</ion-select-option>
+                                      <ion-select-option value="habitacion">Habitacion</ion-select-option>
+                                      <ion-select-option value="salon">Salon</ion-select-option>
+                                      <ion-select-option value="pasillo">Pasillo</ion-select-option>
+                                      <ion-select-option value="recibidor">Recibidor</ion-select-option>
+                                    </ion-select>
+                                  </div>
+                                  <div *ngIf="estancia.tipo == humeda">
+                                    <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
+                                      <ion-select-option value="">Selecciona...</ion-select-option>
+                                      <ion-select-option value="baño">Baño</ion-select-option>
+                                      <ion-select-option value="cocina">Cocina</ion-select-option>
+                                      <ion-select-option value="lavadero">Lavadero</ion-select-option>
+                                      <ion-select-option value="aseo">Aseo</ion-select-option>
+                                      <ion-select-option value="tendedero">Tendedero</ion-select-option>
+                                      <ion-select-option value="cuarto_plancha">Cuarto plancha</ion-select-option>
+                                    </ion-select>
+                                  </div>
+                                  
+                                
+                              </ion-item>
+                            </ion-col>
+                            
+                          </ion-row>
+                        </ion-grid>
+                      </ion-card-content>
+                    </ion-card>
+              </ion-card-content>
+              <!--[disabled]="fDatosPropiedad.invalid"-->
+              <ion-button  type="submit"  shape="round" fill="clear">
+                Validar
+              </ion-button>
+            </ion-card>
+
+  </form>
 </ion-content>
