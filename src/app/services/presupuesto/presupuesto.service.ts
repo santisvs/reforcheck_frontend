@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { EstanciaInterface } from 'src/app/models/estancia';
 import { EstanciaHumedaInterface } from 'src/app/models/estancia-humeda';
+import { BaneraInterface } from 'src/app/models/estancia/banera';
 import { PlantaInterface } from 'src/app/models/planta';
 import { PropiedadInterface } from 'src/app/models/propiedad';
 import { Cantidad } from 'src/app/models/tipos/cantidad.enum';
+import { Material } from 'src/app/models/tipos/material.enum';
 import { Unidad } from 'src/app/models/tipos/unidad.enum';
 
 @Injectable({
@@ -38,20 +40,21 @@ export class PresupuestoService {
   }
 
   crearPlanta(){
-    let numPlantas = this.propiedad.plantas.length + 1;
     let plantaVacia : PlantaInterface = {
       nombre: "",
-      numero: "planta " + numPlantas,
+      numero: this.propiedad.plantas.length + 1,
       estancias: []
     };
     this.propiedad.plantas.push(plantaVacia);
   }
 
-  crearEstancia(_planta: string, _tipo: string){
+  crearEstancia(_planta: number, _tipo: string){
     this.propiedad.plantas.forEach(planta => {
       if(planta.numero == _planta){
         if(_tipo == "HUMEDA"){
           let estanciaHumedaVacia : EstanciaHumedaInterface = {
+            numero: planta.estancias.length + 1,
+            nombre: '',
             tipo : '',
             subtipo : '',
             medida  : {
@@ -239,6 +242,11 @@ export class PresupuestoService {
        
       }
     });
+  }
+
+  crearBanera(_planta, _estancia){
+    
+    //this.propiedad.plantas[_planta].estancias[_estancia].bañeras.push(baneraVacia);
   }
 
   setDatosPropiedad(_propiedad: PropiedadInterface){

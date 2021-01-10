@@ -36,4 +36,8 @@ export class PlantasPage implements OnInit {
     this.presupuestoService.crearEstancia(_planta, _tipo);
   }
 
+  crearBanera(_planta, _estancia){
+    this.presupuestoService.crearBanera(_planta, _estancia);
+  }
+
 }

@@ -1,4 +1,5 @@
 export enum Material {
+    SIN_DEFINIR,
     CERAMICO,
     METALICO,
     CARGA_MINERAL,

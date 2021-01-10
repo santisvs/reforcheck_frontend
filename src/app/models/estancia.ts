@@ -15,6 +15,7 @@ import { TresdInterface } from "./estancia/commons/tresd";
 
 export interface EstanciaInterface {
     id?: string;
+    numero?: number;
     nombre?: string;
     tipo?: string;
     subtipo ?: string;

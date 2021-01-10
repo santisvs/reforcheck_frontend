@@ -1,3 +1,7 @@
-export interface InfoInterface {
-    notas?: string; 
+export class Info {
+    public notas : string;
+    
+    constructor() {
+        this.notas = "";
+    }
 }

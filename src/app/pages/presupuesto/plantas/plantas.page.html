@@ -2,33 +2,31 @@
 
 <ion-content fullscreen class="ion-padding">
   <form #fDatosPlantas="ngForm" (ngSubmit)="validarDatosPlantas(fDatosPlantas)">
-
-            <ion-button size="small" (click)="crearPlanta()">
+            
+            <ion-button size="small" (click)="crearPlanta()" slot="end">
               <ion-icon name="add-outline"></ion-icon>
               Añadir planta
-            </ion-button>
-
+            </ion-button>   
+            
             <ion-card *ngFor="let planta of propiedad.plantas">
               <ion-card-header>
                 <ion-card-subtitle>
                 </ion-card-subtitle>
-                <ion-card-title>{{ planta.numero }}: {{planta.nombre}} {{fDatosPlantas.valid}}</ion-card-title>
+                <ion-card-title>Planta {{ planta.numero }}: {{planta.nombre}} {{fDatosPlantas.valid}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
 
-                      <ion-button size="small" (click)="crearEstancia(planta.numero,'HUMEDA')">
-                        <ion-icon name="add-outline"></ion-icon>
-                        Añadir estancia
-                      </ion-button>
+                <ion-item>
+                  <ion-label position="floating">Nombre</ion-label>
+                  <ion-input type="username" name="nombre" [(ngModel)]="planta.nombre" required></ion-input>
+                </ion-item>
 
-
-                      <ion-item>
-                        <ion-label position="floating">Nombre</ion-label>
-                        <ion-input type="username" name="nombre" [(ngModel)]="planta.nombre" required></ion-input>
-                      </ion-item>
-
-
-                    <ion-card *ngFor="let estancia of planta.estancias">
+                <ion-button size="small" (click)="crearEstancia(planta.numero,'HUMEDA')">
+                  <ion-icon name="add-outline"></ion-icon>
+                    Añadir estancia
+                </ion-button>
+                  
+                <ion-card *ngFor="let estancia of planta.estancias">
                       <ion-card-header>
                         <ion-card-subtitle>
                         </ion-card-subtitle>
@@ -56,7 +54,7 @@
                             <ion-col size-lg="3" size-xs="12" size-md="6">
                               <ion-item>
                                 <ion-label position="floating">Subtipo</ion-label>
-                                  <div *ngIf="estancia.tipo == seca">
+                                  <div *ngIf="estancia.tipo === 'seca'">
                                     <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
                                       <ion-select-option value="">Selecciona...</ion-select-option>
                                       <ion-select-option value="habitacion">Habitacion</ion-select-option>
@@ -65,7 +63,7 @@
                                       <ion-select-option value="recibidor">Recibidor</ion-select-option>
                                     </ion-select>
                                   </div>
-                                  <div *ngIf="estancia.tipo == humeda">
+                                  <div *ngIf="estancia.tipo === 'humeda'">
                                     <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
                                       <ion-select-option value="">Selecciona...</ion-select-option>
                                       <ion-select-option value="baño">Baño</ion-select-option>
@@ -75,6 +73,31 @@
                                       <ion-select-option value="tendedero">Tendedero</ion-select-option>
                                       <ion-select-option value="cuarto_plancha">Cuarto plancha</ion-select-option>
                                     </ion-select>
+                                  </div>
+
+                                  <div *ngIf="estancia.tipo === 'humeda'">
+                                    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+                                      <ion-fab-button color="dark">
+                                        <ion-icon name="add"></ion-icon>
+                                      </ion-fab-button>
+                                      <ion-fab-list side="start">
+                                        <ion-fab-button color="light" (click)="crearBanera(planta.numero, estancia.numero)">
+                                          <ion-icon name="boat-outline"></ion-icon>
+                                        </ion-fab-button>
+                                        <ion-fab-button color="dark">
+                                          <ion-icon name="body-outline"></ion-icon>
+                                        </ion-fab-button>
+                                        <ion-fab-button color="light">
+                                          <ion-icon name="bulb-outline"></ion-icon>
+                                        </ion-fab-button>
+                                        <ion-fab-button color="light">
+                                          <ion-icon name="battery-full-outline"></ion-icon>
+                                        </ion-fab-button>
+                                        <ion-fab-button color="light">
+                                          <ion-icon name="bus-outline"></ion-icon>
+                                        </ion-fab-button>
+                                      </ion-fab-list>
+                                    </ion-fab>
                                   </div>
                                   
                                 
