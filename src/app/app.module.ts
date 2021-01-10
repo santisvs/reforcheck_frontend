@@ -11,20 +11,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UnitPageModule } from './pages/unit/unit.module';
-import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { HomePageModule } from './pages/home/home.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainMenuComponent
+    AppComponent
   ],
   entryComponents: [
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    HomePageModule,
     UnitPageModule,
     AppRoutingModule,
     HttpClientModule,

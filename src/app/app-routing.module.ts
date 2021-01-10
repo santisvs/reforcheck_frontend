@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -17,14 +16,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'budget',
-    loadChildren: () => import('./pages/budget/budget.module').then( m => m.BudgetPageModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'unit',
-    loadChildren: () => import('./pages/unit/unit.module').then( m => m.UnitPageModule)
-  }
+    path: 'presupuesto',
+    loadChildren: () => import('./pages/presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
+  },
+  { path: '', redirectTo: 'presupuesto', pathMatch: 'full' },
 
+
+  
 ];
 
 @NgModule({

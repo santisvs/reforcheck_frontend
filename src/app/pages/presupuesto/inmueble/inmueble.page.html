@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <form #fDatosInmueble="ngForm" (ngSubmit)="validarDatosInmueble(fDatosInmueble)">
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+            </ion-card-subtitle>
+            <ion-card-title>{{ title }} {{fDatosInmueble.valid}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col size-lg="12" size-xs="12" size-md="12">
+                  <ion-item>
+                    <ion-label position="floating">Dirección</ion-label>
+                    <ion-input type="street-address" name="direccion" [(ngModel)]="propiedad.direccion" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="6" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Tipo de propiedad</ion-label>
+                    <ion-select value="" name="tipo" [(ngModel)]="propiedad.tipo" required>
+                      <ion-select-option value="">Selecciona...</ion-select-option>
+                      <ion-select-option value="chalet">Chalet</ion-select-option>
+                      <ion-select-option value="piso">Piso</ion-select-option>
+                      <ion-select-option value="local">Local</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Posición GPS</ion-label>
+                    <ion-input type="text" name="gps" [(ngModel)]="propiedad.gps" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Fecha contrucción edificio</ion-label>
+                    <ion-datetime value="1995-01-01" placeholder="Selecciona día" name="fecha_construccion" [(ngModel)]="propiedad.fecha_construccion"></ion-datetime>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Fecha última reforma</ion-label>
+                    <ion-datetime value="1995-01-01" placeholder="Selecciona día" name="fecha_ultima_reforma" [(ngModel)]="propiedad.fecha_ultima_reforma"></ion-datetime>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+          <!--[disabled]="fDatosPropiedad.invalid"-->
+          <ion-button  type="submit"  shape="round" fill="clear">
+            Validar
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </form>
+    </ion-row>
+    </ion-grid>
+</ion-content>
+

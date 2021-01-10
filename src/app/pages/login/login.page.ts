@@ -1,8 +1,9 @@
-import { Component, OnInit , Input} from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
+import { AlertController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+
 import { LoginService } from '../../services/login/login.service';
 
 @Component({
@@ -13,14 +14,13 @@ import { LoginService } from '../../services/login/login.service';
 export class LoginPage implements OnInit {
 
   private loginForm: any;
-  private token: any;
-
+  
   constructor(
     private loginService: LoginService,
     private formBuilder: FormBuilder,
-    private router: Router,
     private alertCtrl: AlertController,
     private storage: Storage,
+    private navCtrl: NavController
   ) { 
     this.loginForm = this.formBuilder.group({
       username: '',
@@ -31,22 +31,27 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  sendLogin(loginData) {
+  async sendLogin(loginData) {
     if (!loginData.password) {
       this.presentAlert('Comprobar que los campos obligatorios esten rellenos correctamente');
     } else {
       this.loginService.loginUser(loginData).subscribe(
         (result:any) => {
-          this.storage.set('access_token', result.access_token);
-          this.storage.set('type_token', result.token_type);
-          this.storage.set('refresh_token', result.refresh_token);
-          this.router.navigate(['/unit']);
+          this.saveStorage(result);
+          this.navCtrl.navigateRoot('/home');
         },
         error => {
+          this.storage.clear();
           this.presentAlert("Error en el login. Revise los datos y vuelva a intentarlo");
         }
       );
     }
+  }
+
+  async saveStorage(token){
+          await this.storage.set('access_token', token.access_token);
+          await this.storage.set('type_token', token.token_type);
+          await this.storage.set('refresh_token', token.refresh_token);
   }
 
   async presentAlert(texto: any) {

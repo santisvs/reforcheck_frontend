@@ -1,0 +1,146 @@
+
+<app-header></app-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+
+  <ion-grid>
+    <ion-row>
+      <form #fDatosPropiedad="ngForm" (ngSubmit)="validarDatosPropiedad(fDatosPropiedad)">
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>
+            </ion-card-subtitle>
+            <ion-card-title>{{ title }} {{fDatosPropiedad.valid}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Nombre</ion-label>
+                    <ion-input type="username" name="nombre_propietario" [(ngModel)]="propiedad.nombre_propietario" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Dni</ion-label>
+                    <ion-input type="text" name="dni_propietario" [(ngModel)]="propiedad.dni_propietario" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Teléfono</ion-label>
+                    <ion-input type="tel" name="telf_propietario" [(ngModel)]="propiedad.telf_propietario" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="email" name="email_propietario" [(ngModel)]="propiedad.email_propietario" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="6" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Dirección</ion-label>
+                    <ion-input type="street-address" name="direccion" [(ngModel)]="propiedad.direccion" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="6" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Tipo de propiedad</ion-label>
+                    <ion-select value="" name="tipo" [(ngModel)]="propiedad.tipo" required>
+                      <ion-select-option value="">Selecciona...</ion-select-option>
+                      <ion-select-option value="chalet">Chalet</ion-select-option>
+                      <ion-select-option value="piso">Piso</ion-select-option>
+                      <ion-select-option value="local">Local</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Posición GPS</ion-label>
+                    <ion-input type="text" name="gps" [(ngModel)]="propiedad.gps" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Fecha contrucción edificio</ion-label>
+                    <ion-datetime value="1995-01-01" placeholder="Selecciona día" name="fecha_construccion" [(ngModel)]="propiedad.fecha_construccion"></ion-datetime>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Fecha última reforma</ion-label>
+                    <ion-datetime value="1995-01-01" placeholder="Selecciona día" name="fecha_ultima_reforma" [(ngModel)]="propiedad.fecha_ultima_reforma"></ion-datetime>
+                  </ion-item>
+                </ion-col>
+                <ion-col size-lg="3" size-xs="12" size-md="6">
+                  <ion-item>
+                    <ion-label position="floating">Nombre reforchecker</ion-label>
+                    <ion-input type="username" name="nombre_reforchecker" [(ngModel)]="propiedad.nombre_reforchecker" required></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+          <!--[disabled]="fDatosPropiedad.invalid"-->
+          <ion-button  type="submit"  shape="round" fill="clear">
+            Validar
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </form>
+    </ion-row>
+    <div *ngIf="datosPropiedadValidado">
+      <ion-row>
+        <ion-col size="3" offset="9">
+          <ion-button size="small" (click)="crearPlanta()">
+            <ion-icon name="add-outline"></ion-icon>
+            Añadir planta
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let planta of propiedad.plantas">
+        <form #fDatosPlanta="ngForm" (ngSubmit)="validarDatosPlanta(fDatosPlanta)">
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>
+              </ion-card-subtitle>
+              <ion-card-title>{{ planta.nombre }} {{fDatosPlanta.valid}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size-lg="3" size-xs="12" size-md="6">
+                    <ion-item>
+                      <ion-label position="floating">Nombre</ion-label>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-lg="3" size-xs="12" size-md="6">
+                    <ion-item>
+                      <ion-label position="floating">Dni</ion-label>
+                      <ion-input type="text" name="dni_propietario" [(ngModel)]="propiedad.dni_propietario" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+            <ion-button [disabled]="fDatosPlanta.invalid" type="submit"  shape="round" fill="clear">
+              Validar
+            </ion-button>
+          </ion-card>
+        </ion-col>
+      </form>
+      </ion-row>
+    </div>
+    
+  </ion-grid>
+</ion-content>
