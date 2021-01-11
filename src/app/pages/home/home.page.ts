@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { PropiedadInterface } from '../../models/propiedad';
-import { PlantaInterface } from '../../models/planta';
+import { Propiedad } from '../../models/propiedad';
+import { Planta } from '../../models/planta';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { PlantaInterface } from '../../models/planta';
 })
 export class HomePage implements OnInit  {
 
-  public propiedad: PropiedadInterface;
+  public propiedad: Propiedad;
   public title: string;
   public datosPropiedadValidado: boolean;
   
@@ -24,19 +24,7 @@ export class HomePage implements OnInit  {
   ngOnInit() {
     console.log("Registrar una propiedad");
     this.datosPropiedadValidado=false;
-    this.propiedad = {
-      nombre_propietario: '',
-      dni_propietario: '',
-      telf_propietario: '',
-      email_propietario: '',
-      direccion: '',
-      tipo: '',
-      gps: '',
-      fecha_construccion: new Date('1700-01-01'),
-      fecha_ultima_reforma: new Date('1700-01-01'),
-      nombre_reforchecker: '',
-      plantas: []
-    }
+    this.propiedad = new Propiedad();
   }
 
   validarDatosPropiedad(fDatosPropiedad: NgForm){
@@ -67,16 +55,13 @@ export class HomePage implements OnInit  {
 
   crearPlanta(){
     let numPlantas = this.propiedad.plantas.length + 1;
-    let plantaVacia : PlantaInterface = {
-      nombre: "planta " + numPlantas,
-      estancias: []
-    };
+    let plantaVacia : Planta = new Planta();
     this.propiedad.plantas.push(plantaVacia);
   }
 
   crearPlantaValue(numeroPlantas){
     for (let i = 0; i < numeroPlantas.length; i++) {
-      let plantaVacia : PlantaInterface;
+      let plantaVacia : Planta;
       plantaVacia.nombre = "planta " + i;
       this.propiedad.plantas.push(plantaVacia);
     }

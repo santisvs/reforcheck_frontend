@@ -1,8 +1,15 @@
 import { Unidad } from "../tipos/unidad.enum";
-import { ElementoInterface } from "./commons/elemento";
+import { Elemento } from "./commons/elemento";
 
-export interface MobiliarioObraInterface extends ElementoInterface {
-    cantidad ?: number;
-    unidad ?: Unidad;
-    desmontable ?: boolean;
+export class MobiliarioObra extends Elemento {
+    public cantidad : number;
+    public unidad : Unidad;
+    public desmontable : boolean;
+
+    constructor(){
+        super();
+        this.cantidad = 0;
+        this.unidad = Unidad.SIN_DEFINIR;
+        this.desmontable = false;
+    }
 }

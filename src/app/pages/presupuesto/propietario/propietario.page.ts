@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
-import { PropiedadInterface } from '../../../models/propiedad';
+import { Propiedad } from '../../../models/propiedad';
 
 @Component({
   selector: 'app-propietario',
@@ -10,7 +10,7 @@ import { PropiedadInterface } from '../../../models/propiedad';
 })
 export class PropietarioPage implements OnInit {
 
-  public propiedad: PropiedadInterface;
+  public propiedad: Propiedad;
 
   constructor(
     private presupuestoService: PresupuestoService

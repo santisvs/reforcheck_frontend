@@ -1,6 +1,11 @@
-import { TresdInterface } from "./commons/tresd";
-import { ElementoInterface } from "./commons/elemento";
+import { Tresd } from "./commons/tresd";
+import { Elemento } from "./commons/elemento";
 
-export interface ArmarioInterface extends ElementoInterface {
-    medida ?: TresdInterface;
+export class Armario extends Elemento {
+    public medida : Tresd;
+
+    constructor(){
+        super();
+        this.medida = new Tresd();
+    }
 }

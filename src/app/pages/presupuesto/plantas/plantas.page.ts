@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSelect } from '@ionic/angular';
-import { PropiedadInterface } from 'src/app/models/propiedad';
+import { Propiedad } from 'src/app/models/propiedad';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class PlantasPage implements OnInit {
 
   @ViewChild('selectEstancia', { static: false }) selectRef: IonSelect;
 
-  public propiedad: PropiedadInterface;
+  public propiedad: Propiedad;
 
   constructor(
     private presupuestoService: PresupuestoService

@@ -1,7 +1,13 @@
-import { DosdInterface } from "./commons/dosd";
-import { ElementoInterface } from "./commons/elemento";
+import { Dosd } from "./commons/dosd";
+import { Elemento } from "./commons/elemento";
 
-export interface SoladoInterface extends ElementoInterface {
-    tipo?: string;
-    medida?: DosdInterface;
+export class Solado extends Elemento {
+    public tipo: string;
+    public medida: Dosd;
+
+    constructor(){
+        super();
+        this.tipo = "";
+        this.medida = new Dosd();
+    }
 }

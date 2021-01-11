@@ -1,10 +1,18 @@
 import { Material } from "../tipos/material.enum";
-import { ElementoInterface } from "./commons/elemento";
-import { TresdInterface } from "./commons/tresd";
+import { Elemento } from "./commons/elemento";
+import { Tresd } from "./commons/tresd";
 
-export interface BidetInterface extends ElementoInterface {
-    suspendido ?: boolean;
-    demuele ?: boolean;
-    material ?: Material;
-    medida ?: TresdInterface;
+export class Bidet extends Elemento {
+    public suspendido : boolean;
+    public demuele : boolean;
+    public material : Material;
+    public medida : Tresd;
+
+    constructor(){
+        super();
+        this.suspendido = false;
+        this.demuele = false;
+        this.material = Material.SIN_DEFINIR;
+        this.medida = new Tresd();
+    }
 }

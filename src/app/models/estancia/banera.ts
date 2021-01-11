@@ -1,14 +1,25 @@
 import { Material } from "../tipos/material.enum";
-import { ElementoInterface } from "./commons/elemento";
-import { TresdInterface } from "./commons/tresd";
-import { UnodInterface } from "./commons/unod";
+import { Elemento } from "./commons/elemento";
+import { Tresd } from "./commons/tresd";
+import { Unod } from "./commons/unod";
 
-export interface BaneraInterface extends ElementoInterface {
-    demuele ?: boolean;
-    material ?: Material;
-    medida ?: TresdInterface;
-    griferia_empotrada ?: boolean;
-    mampara ?: boolean;
-    recta ?: boolean;
-    tramos ?: Array<UnodInterface>;
+export class Banera extends Elemento {
+    public demuele : boolean;
+    public material : Material;
+    public medida : Tresd;
+    public griferia_empotrada : boolean;
+    public mampara : boolean;
+    public recta : boolean;
+    public tramos : Array<Unod>;
+
+    constructor(){
+        super();
+        this.demuele = false;
+        this.material = Material.SIN_DEFINIR;
+        this.medida = new Tresd();
+        this.griferia_empotrada = false;
+        this.mampara = false;
+        this.recta = false;
+        this.tramos = [];
+    }
 }

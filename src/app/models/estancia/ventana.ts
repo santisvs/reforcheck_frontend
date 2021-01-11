@@ -1,8 +1,15 @@
-import { DosdInterface } from "./commons/dosd";
-import { ElementoInterface } from "./commons/elemento";
+import { Dosd } from "./commons/dosd";
+import { Elemento } from "./commons/elemento";
 
-export interface VentanaInterface extends ElementoInterface{
-    medida ?: DosdInterface;
-    persiana ?: boolean;
-    capialzado ?: boolean;
+export class Ventana extends Elemento{
+    public medida : Dosd;
+    public persiana : boolean;
+    public capialzado : boolean;
+
+    constructor(){
+        super();
+        this.medida = new Dosd();
+        this.persiana = false;
+        this.capialzado = false;
+    }
 }

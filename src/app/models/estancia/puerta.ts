@@ -1,11 +1,19 @@
-import { TresdInterface } from "./commons/tresd";
-import { ElementoInterface } from "./commons/elemento";
-import { FabricanteInterface } from "./commons/fabricante";
-import { InfoInterface } from "./commons/info";
+import { Tresd } from "./commons/tresd";
+import { Elemento } from "./commons/elemento";
+import { Fabricante } from "./commons/fabricante";
+import { Info } from "./commons/info";
 
-export interface PuertaInterface extends ElementoInterface {
-    medida ?: TresdInterface;
-    estandar ?: boolean;
-    espesor_tabique ?: number;
-    mano ?: boolean; // Izquierda true, Derecha false;
+export class Puerta extends Elemento {
+    public medida : Tresd;
+    public estandar : boolean;
+    public espesor_tabique : number;
+    public mano : boolean; // Izquierda true, Derecha false;
+
+    constructor(){
+        super();
+        this.medida = new Tresd();
+        this.estandar = false;
+        this.espesor_tabique = 0;
+        this.mano = false;
+    }
 }

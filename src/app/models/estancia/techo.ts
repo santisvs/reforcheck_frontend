@@ -1,7 +1,14 @@
-import { ElementoInterface } from "./commons/elemento";
+import { Elemento } from "./commons/elemento";
 
-export interface TechoInterface extends ElementoInterface {
-    falso_techo ?: boolean;
-    moldura ?: boolean;
-    demuele ?: boolean;
+export class Techo extends Elemento {
+    public falso_techo : boolean;
+    public moldura : boolean;
+    public demuele : boolean;
+
+    constructor(){
+        super();
+        this.falso_techo = false;
+        this.moldura = false;
+        this.demuele = false;
+    }
 }

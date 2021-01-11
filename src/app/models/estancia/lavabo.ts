@@ -1,12 +1,22 @@
 import { Material } from "../tipos/material.enum";
-import { ElementoInterface } from "./commons/elemento";
-import { TresdInterface } from "./commons/tresd";
+import { Elemento } from "./commons/elemento";
+import { Tresd } from "./commons/tresd";
 
-export interface LavaboInterface extends ElementoInterface {
-    senos ?: number;
-    demuele ?: boolean;
-    mueble ?: boolean;
-    material ?: Material;
-    medida ?: TresdInterface;
-    griferia_empotrada ?: boolean;
+export class Lavabo extends Elemento {
+    public senos : number;
+    public demuele : boolean;
+    public mueble : boolean;
+    public material : Material;
+    public medida : Tresd;
+    public griferia_empotrada : boolean;
+
+    constructor(){
+        super();
+        this.senos = 0;
+        this.demuele = false;
+        this.mueble = false;
+        this.material = Material.SIN_DEFINIR;
+        this.medida = new Tresd();
+        this.griferia_empotrada = false;
+    }
 }

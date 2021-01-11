@@ -1,11 +1,21 @@
 import { Cantidad } from "../tipos/cantidad.enum";
-import { ElementoInterface } from "./commons/elemento";
+import { Elemento } from "./commons/elemento";
 
-export interface PinturaInterface extends ElementoInterface {
-    fisuracion ?: Cantidad;
-    papel_pintado ?: boolean;
-    gotelet ?: boolean;
-    raspado ?: boolean;
-    color ?: string;
-    acabado ?: string;
+export class Pintura extends Elemento {
+    public fisuracion : Cantidad;
+    public papel_pintado : boolean;
+    public gotelet : boolean;
+    public raspado : boolean;
+    public color : string;
+    public acabado : string;
+
+    constructor(){
+        super();
+        this.fisuracion = Cantidad.SIN_DEFINIR;
+        this.papel_pintado = false;
+        this.gotelet = false;
+        this.raspado = false;
+        this.color = "";
+        this.acabado = "";
+    }
 }

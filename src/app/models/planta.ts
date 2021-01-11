@@ -1,10 +1,16 @@
-import { EstanciaInterface } from "./estancia";
-import { EstanciaHumedaInterface } from "./estancia-humeda";
+import { Estancia } from "./estancia";
 
-export interface PlantaInterface {
-    id?: string;
-    nombre?: string;
-    numero?: number;
-    estancias?: Array<EstanciaHumedaInterface>;
+export class Planta {
+    public id: string;
+    public nombre: string;
+    public numero: number;
+    public estancias: Array<Estancia>;
+
+    constructor(){
+        this.id = "";
+        this.nombre = "";
+        this.numero = 0;
+        this.estancias = [];
+    }
     
 }

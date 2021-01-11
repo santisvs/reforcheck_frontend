@@ -1,9 +1,18 @@
-import { TresdInterface } from "./commons/tresd";
-import { ElementoInterface } from "./commons/elemento";
+import { Tresd } from "./commons/tresd";
+import { Elemento } from "./commons/elemento";
+import { Material } from "../tipos/material.enum";
 
-export interface RadiadorInterface extends ElementoInterface {
-    energia?: string;
-    material?: string;
-    medida ?: TresdInterface;
-    num_elementos ?: number;
+export class Radiador extends Elemento {
+    public energia: string;
+    public material: Material;
+    public medida : Tresd;
+    public num_elementos : number;
+
+    constructor(){
+        super();
+        this.energia = "";
+        this.material = Material.SIN_DEFINIR;
+        this.medida = new Tresd();
+        this.num_elementos = 0;
+    }
 }
