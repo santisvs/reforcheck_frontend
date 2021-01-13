@@ -22,6 +22,10 @@ export class PropietarioPage implements OnInit {
     this.propiedad = this.presupuestoService.getPropiedad();
   }
 
+  guardarPresupuesto(){
+    console.log(this.presupuestoService.getPropiedad());
+  }
+
   validarDatosPropiedad(fDatosPropiedad: NgForm){
     console.log("Validar Datos propiedad");
     console.log(fDatosPropiedad.form.value);

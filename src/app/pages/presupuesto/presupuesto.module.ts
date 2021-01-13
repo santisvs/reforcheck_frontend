@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PresupuestoPageRoutingModule } from './presupuesto-routing.module';
 
 import { PresupuestoPage } from './presupuesto.page';
+import { SharedModule } from 'src/app/components/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PresupuestoPageRoutingModule
+    PresupuestoPageRoutingModule,
+    SharedModule
   ],
   declarations: [PresupuestoPage]
 })

@@ -1,0 +1,148 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Inodoro (id: {{s_id}})
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <!--SECCIÓN DATOS-->
+    <ion-row>
+      <ion-grid fixed>
+        <ion-row>
+          <H4>Datos</H4>
+        </ion-row>
+        <ion-row>
+          <ion-col size-lg="2" size-xs="4" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Largo</ion-label>
+              <ion-input type="number" name="largo" [(ngModel)]="inodoro.medida.largo" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="2" size-xs="4" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Alto</ion-label>
+              <ion-input type="number" name="alto" [(ngModel)]="inodoro.medida.alto" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="2" size-xs="4" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Ancho</ion-label>
+              <ion-input type="number" name="ancho" [(ngModel)]="inodoro.medida.ancho" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="2" size-xs="12" size-md="6">
+            <ion-item>
+              <ion-label position="floating">Unidad</ion-label>
+              <ion-select value="0" interface="popover" name="unidad" [(ngModel)]="inodoro.medida.unidad" required>
+                <ion-select-option value="0">Sin definir</ion-select-option>
+                <ion-select-option value="2">Metros</ion-select-option>
+                <ion-select-option value="3">Centimetros</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="6">
+            <ion-item>
+              <ion-label position="floating">Material</ion-label>
+              <ion-select value="0" interface="popover" name="material" [(ngModel)]="inodoro.material" required>
+                <ion-select-option value="0">Sin definir</ion-select-option>
+                <ion-select-option value="1">Cerámica</ion-select-option>
+                <ion-select-option value="2">Metálica</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label>Demuele</ion-label>
+              <ion-toggle slot="start" name="demuele" [(ngModel)]="inodoro.demuele"></ion-toggle>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label>Suspendido</ion-label>
+              <ion-toggle slot="start" name="suspendido" [(ngModel)]="inodoro.suspendido"></ion-toggle>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label>Ducheta</ion-label>
+              <ion-toggle slot="start" name="ducheta" [(ngModel)]="inodoro.ducheta"></ion-toggle>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+      </ion-grid>
+    </ion-row>
+    <!--SECCIÓN OBSERVACIONES-->
+    <ion-row>
+      <ion-grid fixed>
+        <ion-row>
+          <H4>Observaciones</H4>
+        </ion-row>
+        <ion-row>
+          <ion-textarea rows="6" cols="20" name="info" [(ngModel)]="inodoro.info" style="border: solid 1px black;"></ion-textarea>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+    <!--SECCIÓN FABRICANTE-->
+    <ion-row>
+      <ion-grid fixed>
+        <ion-row>
+          <H4>Fabricante</H4>
+        </ion-row>
+        <ion-row>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Referencia</ion-label>
+              <ion-input type="text" name="referencia" [(ngModel)]="inodoro.fabricante.referencia"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Precio</ion-label>
+              <ion-input type="number" name="precio" [(ngModel)]="inodoro.fabricante.precio"></ion-input>
+              <ion-icon name="logo-euro" slot="end"></ion-icon>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input type="text" name="nombre" [(ngModel)]="inodoro.fabricante.nombre"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Direccion</ion-label>
+              <ion-input type="text" name="direccion" [(ngModel)]="inodoro.fabricante.direccion"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Url</ion-label>
+              <ion-input type="text" name="url" [(ngModel)]="inodoro.fabricante.url"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size-lg="4" size-xs="12" size-md="4">
+            <ion-item>
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input type="text" name="telefono" [(ngModel)]="inodoro.fabricante.telefono"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+    
+  </ion-grid>  
+</ion-content>
+

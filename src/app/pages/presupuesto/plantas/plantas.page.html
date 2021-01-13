@@ -25,86 +25,276 @@
                   <ion-icon name="add-outline"></ion-icon>
                     Añadir estancia
                 </ion-button>
-                  
+                <!------------------------ Estancia ------------------------>
                 <ion-card *ngFor="let estancia of planta.estancias">
                       <ion-card-header>
                         <ion-card-subtitle>
                         </ion-card-subtitle>
-                        <ion-card-title>{{ estancia.nombre }}</ion-card-title>
+                        <ion-card-title>Estancia {{ estancia.numero }}</ion-card-title>
                       </ion-card-header>
                       <ion-card-content>
+                        <!------------------------ seccion crear elementos ------------------------>
+                        <app-select-elementos [estancia]="estancia.numero" [planta]="planta.numero" (crearElementos)="escuchaCrearElementos($event)"></app-select-elementos>
                         <ion-grid>
                           <ion-row>
-                            <ion-col size-lg="12" size-xs="12" size-md="12">
+                            <!------------------------ Nombre ------------------------>
+                            <ion-col size-lg="6" size-xs="12" size-md="6">
                               <ion-item>
                                 <ion-label position="floating">Nombre</ion-label>
                                 <ion-input type="street-address" name="nombre" [(ngModel)]="estancia.nombre" required></ion-input>
                               </ion-item>
                             </ion-col>
+                            <!------------------------ Tipo ------------------------>
                             <ion-col size-lg="6" size-xs="12" size-md="6">
                               <ion-item>
-                                <ion-label position="floating">Tipo</ion-label>
-                                <ion-select value="" name="tipo" [(ngModel)]="estancia.tipo" required>
-                                  <ion-select-option value="">Selecciona...</ion-select-option>
+                                <ion-label>Tipo</ion-label>
+                                <ion-select value="default" name="tipo" [(ngModel)]="estancia.tipo" required aria-placeholder="hola">
+                                  <ion-select-option value="default">Selecciona...</ion-select-option>
                                   <ion-select-option value="seca">Seca</ion-select-option>
                                   <ion-select-option value="humeda">Humeda</ion-select-option>
                                 </ion-select>
                               </ion-item>
                             </ion-col>
-                            <ion-col size-lg="3" size-xs="12" size-md="6">
+                          </ion-row>
+                          <ion-row>
+                            <!------------------------ Subtipo ------------------------>
+                            <ion-col size-lg="6" size-xs="12" size-md="6">
                               <ion-item>
-                                <ion-label position="floating">Subtipo</ion-label>
-                                  <div *ngIf="estancia.tipo === 'seca'">
-                                    <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
-                                      <ion-select-option value="">Selecciona...</ion-select-option>
-                                      <ion-select-option value="habitacion">Habitacion</ion-select-option>
-                                      <ion-select-option value="salon">Salon</ion-select-option>
-                                      <ion-select-option value="pasillo">Pasillo</ion-select-option>
-                                      <ion-select-option value="recibidor">Recibidor</ion-select-option>
+                                    <ion-label position="floating">Subtipo</ion-label>
+                                    <ion-select value="default" name="subtipo" [(ngModel)]="estancia.subtipo" required>
+                                      <div *ngIf="estancia.tipo === 'default'">
+                                        <ion-select-option value="default" >Selecciona tipo</ion-select-option>
+                                      </div>
+                                      <div *ngIf="estancia.tipo === 'seca'">
+                                        <ion-select-option value="default" >Selecciona...</ion-select-option>
+                                        <ion-select-option value="habitacion">Habitacion</ion-select-option>
+                                        <ion-select-option value="salon">Salon</ion-select-option>
+                                        <ion-select-option value="pasillo">Pasillo</ion-select-option>
+                                        <ion-select-option value="recibidor">Recibidor</ion-select-option>
+                                      </div>
+                                      <div *ngIf="estancia.tipo === 'humeda'">
+                                        <ion-select-option value="" >Selecciona...</ion-select-option>
+                                        <ion-select-option value="baño">Baño</ion-select-option>
+                                        <ion-select-option value="cocina">Cocina</ion-select-option>
+                                        <ion-select-option value="lavadero">Lavadero</ion-select-option>
+                                        <ion-select-option value="aseo">Aseo</ion-select-option>
+                                        <ion-select-option value="tendedero">Tendedero</ion-select-option>
+                                        <ion-select-option value="cuarto_plancha">Cuarto plancha</ion-select-option>
+                                      </div>
                                     </ion-select>
-                                  </div>
-                                  <div *ngIf="estancia.tipo === 'humeda'">
-                                    <ion-select value="" name="subtipo" [(ngModel)]="estancia.subtipo" required>
-                                      <ion-select-option value="">Selecciona...</ion-select-option>
-                                      <ion-select-option value="baño">Baño</ion-select-option>
-                                      <ion-select-option value="cocina">Cocina</ion-select-option>
-                                      <ion-select-option value="lavadero">Lavadero</ion-select-option>
-                                      <ion-select-option value="aseo">Aseo</ion-select-option>
-                                      <ion-select-option value="tendedero">Tendedero</ion-select-option>
-                                      <ion-select-option value="cuarto_plancha">Cuarto plancha</ion-select-option>
-                                    </ion-select>
-                                  </div>
-
-                                  <div *ngIf="estancia.tipo === 'humeda'">
-                                    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-                                      <ion-fab-button color="dark">
-                                        <ion-icon name="add"></ion-icon>
-                                      </ion-fab-button>
-                                      <ion-fab-list side="start">
-                                        <ion-fab-button color="light" (click)="crearBanera(planta.numero, estancia.numero)">
-                                          <ion-icon name="boat-outline"></ion-icon>
-                                        </ion-fab-button>
-                                        <ion-fab-button color="dark">
-                                          <ion-icon name="body-outline"></ion-icon>
-                                        </ion-fab-button>
-                                        <ion-fab-button color="light">
-                                          <ion-icon name="bulb-outline"></ion-icon>
-                                        </ion-fab-button>
-                                        <ion-fab-button color="light">
-                                          <ion-icon name="battery-full-outline"></ion-icon>
-                                        </ion-fab-button>
-                                        <ion-fab-button color="light">
-                                          <ion-icon name="bus-outline"></ion-icon>
-                                        </ion-fab-button>
-                                      </ion-fab-list>
-                                    </ion-fab>
-                                  </div>
-                                  
-                                
                               </ion-item>
                             </ion-col>
-                            
+                            <!------------------------ Medida ------------------------>
+                            <ion-col size-lg="6" size-xs="12" size-md="6">
+                                <ion-item>
+                                  <ion-label position="floating">Medida</ion-label>
+                                  <ion-grid>
+                                    <ion-row>
+                                      <ion-col size="4">
+                                        <ion-item>
+                                          <ion-label position="floating">Largo</ion-label>
+                                          <ion-input type="street-address" name="largo" [(ngModel)]="estancia.medida.largo" required></ion-input>
+                                        </ion-item>
+                                      </ion-col>
+                                      <ion-col size="4">
+                                        <ion-item>
+                                          <ion-label position="floating">Ancho</ion-label>
+                                          <ion-input type="street-address" name="ancho" [(ngModel)]="estancia.medida.ancho" required></ion-input>
+                                        </ion-item>
+                                      </ion-col>
+                                      <ion-col size="4">
+                                        <ion-item>
+                                          <ion-label position="floating">Alto</ion-label>
+                                          <ion-input type="street-address" name="alto" [(ngModel)]="estancia.medida.alto" required></ion-input>
+                                        </ion-item>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-grid>
+                                </ion-item>
+                            </ion-col>
                           </ion-row>
+                          <ion-row>
+                              <!------------------------ Mobiliario de obra ------------------------>
+                              <div *ngIf="estancia.mobiliario_obra != null">
+                                <ion-card (click)="verMobiliarioObra(planta.numero, estancia.numero)">
+                                  <ion-card-header (click)="eliminarElemento(planta.numero, estancia.numero,'mobiliario_obra')">
+                                    <ion-icon name="remove-circle"></ion-icon>
+                                  </ion-card-header>
+                                  <ion-card-content>
+                                    Mob.Obra
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Techo ------------------------>
+                              <div *ngIf="estancia.techo != null">
+                                <ion-card (click)="verTecho(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Techo
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Revestimiento ------------------------>
+                              <div *ngIf="estancia.revestimiento != null">
+                                <ion-card (click)="verRevestimiento(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Revestimiento
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Solado ------------------------>
+                              <div *ngIf="estancia.solado != null">
+                                <ion-card (click)="verSolado(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Solado
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Rodapie ------------------------>
+                              <div *ngIf="estancia.rodapie != null">
+                                <ion-card (click)="verRodapie(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Rodapie
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Pintura ------------------------>
+                              <div *ngIf="estancia.pintura != null">
+                                <ion-card (click)="verPintura(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Pintura
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Instalacion ------------------------>
+                              <div *ngIf="estancia.instalacion != null">
+                                <ion-card (click)="verInstalacion(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Instalacion
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                              <!------------------------ Iluminacion ------------------------>
+                              <div *ngIf="estancia.iluminacion != null">
+                                <ion-card (click)="verIluminacion(planta.numero, estancia.numero)">
+                                  <ion-card-content>
+                                    Iluminacion
+                                  </ion-card-content>
+                                </ion-card>
+                              </div>
+                          </ion-row>
+                          <!------------------------ Ventanas ------------------------>
+                          <div *ngIf="estancia.ventanas.length > 0">
+                            <ion-row>
+                              <ion-label>Ventanas</ion-label>
+                              <ion-card *ngFor="let ventana of estancia.ventanas" (click)="verVentanaById(planta.numero, estancia.numero, ventana.id)">
+                                <ion-card-header (click)="eliminarElemento(planta.numero, estancia.numero,'ventana',ventana.id)">
+                                  <ion-icon name="remove-circle"></ion-icon>
+                                </ion-card-header>
+                                <ion-card-content>
+                                  {{ventana.medida.alto}} x {{ventana.medida.largo}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Puertas ------------------------>
+                          <div *ngIf="estancia.puertas.length > 0">
+                            <ion-row>
+                              <ion-label>Puertas</ion-label>
+                              <ion-card *ngFor="let puerta of estancia.puertas" (click)="verPuertaById(planta.numero, estancia.numero, puerta.id)">
+                                <ion-card-content>
+                                  {{puerta.medida.alto}} x {{puerta.medida.largo}} x {{puerta.medida.ancho}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Armarios ------------------------>
+                          <div *ngIf="estancia.armarios.length > 0">
+                            <ion-row>
+                              <ion-label>Armarios</ion-label>
+                              <ion-card *ngFor="let armario of estancia.armarios" (click)="verArmarioById(planta.numero, estancia.numero, armario.id)">
+                                <ion-card-content>
+                                  {{armario.medida.alto}} x {{armario.medida.largo}} x {{armario.medida.ancho}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Radiadores ------------------------>
+                          <div *ngIf="estancia.radiadores.length > 0">
+                            <ion-row>
+                              <ion-label>Radiadores</ion-label>
+                              <ion-card *ngFor="let radiador of estancia.radiadores" (click)="verRadiadorById(planta.numero, estancia.numero, radiador.id)">
+                                <ion-card-content>
+                                  {{radiador.num_elementos}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Climatizadores ------------------------>
+                          <div *ngIf="estancia.climatizacion.length > 0">
+                            <ion-row>
+                              <ion-label>Climatizadores</ion-label>
+                              <ion-card *ngFor="let climatizacion of estancia.climatizacion; let i = index" (click)="verClimatizacionById(planta.numero, estancia.numero, climatizacion.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Bañeras ------------------------>
+                          <div *ngIf="estancia.baneras.length > 0">
+                            <ion-row>
+                              <ion-label>Bañeras</ion-label>
+                              <ion-card *ngFor="let banera of estancia.baneras; let i = index" (click)="verBaneraById(planta.numero, estancia.numero, banera.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Duchas ------------------------>
+                          <div *ngIf="estancia.duchas.length > 0">
+                            <ion-row>
+                              <ion-label>Duchas</ion-label>
+                              <ion-card *ngFor="let ducha of estancia.duchas; let i = index" (click)="verDuchaById(planta.numero, estancia.numero, ducha.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Lavabos ------------------------>
+                          <div *ngIf="estancia.lavabos.length > 0">
+                            <ion-row>
+                              <ion-label>Lavabos</ion-label>
+                              <ion-card *ngFor="let lavabo of estancia.lavabos; let i = index" (click)="verLavaboById(planta.numero, estancia.numero, lavabo.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Inodoros ------------------------>
+                          <div *ngIf="estancia.inodoros.length > 0">
+                            <ion-row>
+                              <ion-label>Inodoros</ion-label>
+                              <ion-card *ngFor="let inodoro of estancia.inodoros; let i = index" (click)="verInodoroById(planta.numero, estancia.numero, inodoro.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>
+                          <!------------------------ Bidets ------------------------>
+                          <div *ngIf="estancia.bidets.length > 0">
+                            <ion-row>
+                              <ion-label>Bidets</ion-label>
+                              <ion-card *ngFor="let bidet of estancia.bidets; let i = index" (click)="verBidetById(planta.numero, estancia.numero, bidet.id)">
+                                <ion-card-content>
+                                  {{i+1}}
+                                </ion-card-content>
+                              </ion-card>
+                            </ion-row>
+                          </div>              
                         </ion-grid>
                       </ion-card-content>
                     </ion-card>

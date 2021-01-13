@@ -1,6 +1,22 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="3">
+        <h2>Presupuesto</h2>
+      </ion-col>
+      <ion-col size="4">
+        <h3>Total: 10.000 €</h3>
+      </ion-col>
+      <ion-col size="2" >
+          <ion-button (click)="guardarPresupuesto()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Guardar presupuesto
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-grid>
     <ion-row>
       <form #fDatosPropiedad="ngForm" (ngSubmit)="validarDatosPropiedad(fDatosPropiedad)">

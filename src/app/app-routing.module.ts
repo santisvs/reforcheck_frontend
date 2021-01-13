@@ -23,10 +23,7 @@ const routes: Routes = [
     path: 'presupuesto',
     loadChildren: () => import('./pages/presupuesto/presupuesto.module').then( m => m.PresupuestoPageModule)
   },
-  { path: '', redirectTo: 'presupuesto', pathMatch: 'full' },
-
-
-  
+  { path: '', redirectTo: 'presupuesto', pathMatch: 'full' }  
 ];
 
 @NgModule({

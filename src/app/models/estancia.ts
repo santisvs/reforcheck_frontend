@@ -39,7 +39,7 @@ export class Estancia {
     public instalacion : Instalacion;
     public iluminacion : Iluminacion;
     // Humeda
-    public bañeras : Array<Banera>;
+    public baneras : Array<Banera>;
     public duchas : Array<Ducha>;
     public lavabos : Array<Lavabo>;
     public inodoros : Array<Inodoro>;
@@ -57,15 +57,15 @@ export class Estancia {
         this.armarios = [];
         this.radiadores = [];
         this.climatizacion = [];
-        this.mobiliario_obra = new MobiliarioObra();
-        this.techo = new Techo();
-        this.revestimiento = new Revestimiento();
-        this.solado = new Solado();
-        this.rodapie = new Rodapie();
-        this.pintura = new Pintura();
-        this.instalacion = new Instalacion();
-        this.iluminacion = new Iluminacion();
-        this.bañeras = [];
+        this.mobiliario_obra = null;
+        this.techo = null;
+        this.revestimiento = null;
+        this.solado = null;
+        this.rodapie = null;
+        this.pintura = null;
+        this.instalacion = null;
+        this.iluminacion = null;
+        this.baneras = [];
         this.duchas = [];
         this.lavabos = [];
         this.inodoros = [];
