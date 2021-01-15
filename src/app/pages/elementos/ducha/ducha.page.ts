@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Ducha } from 'src/app/models/estancia/ducha';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
 
@@ -10,31 +10,26 @@ import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.ser
 })
 export class DuchaPage implements OnInit {
 
-  @Input() s_planta: number;
-  @Input() s_estancia: number;
-  @Input() s_id: string;
-
   public ducha: Ducha;
+  public idPropiedad: string;
+  public idPlanta: string;
+  public idEstancia: string;
+  public idElemento: string;
 
   constructor(
     private presupuestoService: PresupuestoService,
-    private modalCtrl: ModalController
+    private rutaActiva: ActivatedRoute
   ) {
     this.ducha = new Ducha();
-   }
+  }
 
   ngOnInit() {
-    this.ducha = <Ducha>this.presupuestoService.getElemento(this.s_planta, this.s_estancia, "ducha", this.s_id);
-  }
-
-  crearTramo(){
-    this.presupuestoService.crearTramo(this.s_planta, this.s_estancia, this.s_id, "ducha");
-  }
-
-  cerrarModal(){
-    this.modalCtrl.dismiss({
-      //s_propiedad: this.propiedad
+    this.rutaActiva.paramMap.subscribe( params => {
+      this.idPropiedad = params.get('id1');
+      this.idPlanta = params.get('id2');
+      this.idEstancia = params.get('id3');
+      this.idElemento = params.get('id4');
     });
+    this.ducha = <Ducha>this.presupuestoService.getElementoById(this.idPropiedad, this.idPlanta, this.idEstancia, this.idElemento, "ducha");
   }
-
 }

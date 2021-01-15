@@ -1,0 +1,349 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Estancia {{estancia.numero}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="editEstancia()">
+        <ion-icon slot="icon-only"name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-grid fixed class="ion-padding">
+        <ion-row class="ion-align-items-center" >
+          <ion-text color="primary" class="nota" routerLink="../../../../../../../../../../propiedad/{{idPropiedad}}">Propiedad </ion-text>
+          <ion-text color="primary" class="nota" >&nbsp;&nbsp;>&nbsp;&nbsp;</ion-text>
+          <ion-text color="primary" class="nota" routerLink="../../../../../../../../planta/{{idPlanta}}"> Planta</ion-text>
+          <ion-text color="primary" class="nota" >&nbsp;&nbsp;>&nbsp;&nbsp;</ion-text>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size-lg="6" size-xs="6" size-md="6">
+            <ion-text color="medium" >
+              Nombre:
+            </ion-text>
+            <ion-text color="primary">
+              {{estancia.nombre}}
+            </ion-text>
+          </ion-col>
+          <ion-col size-lg="6" size-xs="6" size-md="6">
+            <ion-row>
+              <ion-text color="medium" >
+                Tipo:
+              </ion-text>
+              <ion-text color="primary">
+                {{estancia.tipo}}
+              </ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text color="medium" >
+                Subtipo:
+              </ion-text>
+              <ion-text color="primary">
+                {{estancia.subtipo}}
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3" >
+            <ion-text color="medium" >
+              Medida:
+            </ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="medium" >
+              Largo
+            </ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="medium" >
+              Alto
+            </ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="medium" >
+              Ancho
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="2" offset="3">
+            <ion-text color="primary" >
+              {{estancia.medida.largo}}
+            </ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="primary" >
+              {{estancia.medida.alto}}
+            </ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-text color="primary" >
+              {{estancia.medida.ancho}}
+            </ion-text>
+          </ion-col>
+          <ion-col size="3">
+            <div *ngIf="estancia.medida.unidad == 0">
+              <ion-text color="primary" >Sin definir</ion-text>
+            </div>
+            <div *ngIf="estancia.medida.unidad == 2">
+              <ion-text color="primary" >Metros</ion-text>
+            </div>
+            <div *ngIf="estancia.medida.unidad == 3">
+              <ion-text color="primary" >Centímetros</ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-lg="12" size-xs="12" size-md="12">
+            <ion-text color="medium" class="nota">Ref: </ion-text>
+            <ion-text color="primary" class="nota" >{{estancia.id}}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+    
+    <ion-item-divider color="secondary">
+      <ion-label>
+        Elementos
+      </ion-label>
+    </ion-item-divider>
+    
+      <ion-list lines="full">
+        <div *ngIf="estancia.mobiliario_obra != null">
+          <ion-item-sliding routerLink="mobiliario-obra">
+            <ion-item>
+              <ion-label>Mobiliario de obra</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.techo != null">
+          <ion-item-sliding routerLink="techo">
+            <ion-item>
+              <ion-label>Techo</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.revestimiento != null">
+          <ion-item-sliding routerLink="revestimiento">
+            <ion-item>
+              <ion-label>Revestimiento</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.solado != null">
+          <ion-item-sliding routerLink="solado">
+            <ion-item>
+              <ion-label>Solado</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.rodapie != null">
+          <ion-item-sliding routerLink="rodapie">
+            <ion-item>
+              <ion-label>Rodapie</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.pintura != null">
+          <ion-item-sliding routerLink="pintura">
+            <ion-item>
+              <ion-label>Pintura</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.instalacion != null">
+          <ion-item-sliding routerLink="instalacion">
+            <ion-item>
+              <ion-label>Instalacion</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.iluminacion != null">
+          <ion-item-sliding routerLink="iluminacion">
+            <ion-item>
+              <ion-label>Iluminacion</ion-label>
+            </ion-item>
+      
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.ventanas.length > 0">
+          <ion-item-divider>
+            <ion-label>Ventanas</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let v of estancia.ventanas" routerLink="ventana/{{v.id}}">
+            <ion-item>
+              <ion-label>Ventana {{v.medida.alto}} x {{v.medida.largo}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.puertas.length > 0">
+          <ion-item-divider>
+            <ion-label>Puertas</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let p of estancia.puertas" routerLink="puerta/{{p.id}}">
+            <ion-item>
+              <ion-label>Puerta {{p.medida.alto}} x {{p.medida.largo}} x {{p.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.armarios.length > 0">
+          <ion-item-divider>
+            <ion-label>Armarios</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let a of estancia.armarios" routerLink="armario/{{a.id}}">
+            <ion-item>
+              <ion-label>Armario {{a.medida.alto}} x {{a.medida.largo}} x {{a.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.radiadores.length > 0">
+          <ion-item-divider>
+            <ion-label>Radiadores</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let r of estancia.radiadores" routerLink="radiador/{{r.id}}">
+            <ion-item>
+              <ion-label>Radiador {{r.medida.alto}} x {{r.medida.largo}} x {{r.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        <div *ngIf="estancia.climatizacion.length > 0">
+          <ion-item-divider>
+            <ion-label>Climatizaciones</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let c of estancia.climatizacion" routerLink="climatizacion/{{c.id}}">
+            <ion-item>
+              <ion-label>Climatización</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        
+        <div *ngIf="estancia.baneras.length > 0">
+          <ion-item-divider>
+            <ion-label>Bañeras</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let b of estancia.baneras" routerLink="banera/{{b.id}}">
+            <ion-item>
+              <ion-label>Bañera {{b.medida.alto}} x {{b.medida.largo}} x {{b.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        
+        <div *ngIf="estancia.duchas.length > 0">
+          <ion-item-divider>
+            <ion-label>Duchas</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let d of estancia.duchas" routerLink="ducha/{{d.id}}">
+            <ion-item>
+              <ion-label>Ducha {{d.medida.alto}} x {{d.medida.largo}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        
+        <div *ngIf="estancia.lavabos.length > 0">
+          <ion-item-divider>
+            <ion-label>Lavabos</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let l of estancia.lavabos" routerLink="lavabo/{{l.id}}">
+            <ion-item>
+              <ion-label>Lavabo {{l.medida.alto}} x {{l.medida.largo}} x {{l.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        
+        <div *ngIf="estancia.inodoros.length > 0">
+          <ion-item-divider>
+            <ion-label>Inodoros</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let i of estancia.inodoros" routerLink="inodoro/{{i.id}}">
+            <ion-item>
+              <ion-label>Inodoro {{i.medida.alto}} x {{i.medida.largo}} x {{i.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+        
+        <div *ngIf="estancia.bidets.length > 0">
+          <ion-item-divider>
+            <ion-label>Bidets</ion-label>
+          </ion-item-divider>
+          <ion-item-sliding *ngFor="let b of estancia.bidets" routerLink="bidet/{{b.id}}">
+            <ion-item>
+              <ion-label>Bidet {{b.medida.alto}} x {{b.medida.largo}} x {{b.medida.ancho}}</ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">Delete</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+      </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="secondary" (click)="addElementos()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

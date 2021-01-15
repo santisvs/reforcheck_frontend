@@ -10,8 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UnitPageModule } from './pages/unit/unit.module';
 import { HomePageModule } from './pages/home/home.module';
+import { PropiedadPageModule } from './pages/presupuesto/propiedad/propiedad.module';
 
 
 
@@ -25,7 +25,7 @@ import { HomePageModule } from './pages/home/home.module';
     BrowserModule,
     IonicModule.forRoot(),
     HomePageModule,
-    UnitPageModule,
+    PropiedadPageModule,
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot()

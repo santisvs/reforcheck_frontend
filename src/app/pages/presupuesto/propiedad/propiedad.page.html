@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Propiedad {{propiedad.nombre_propietario}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="editPropiedad()">
+        <ion-icon slot="icon-only"name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="ion-padding">
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Nombre del propietario:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.nombre_propietario}}
+        </ion-text>
+      </ion-col>
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+          <ion-text color="medium" >
+            Dni del propietario:
+          </ion-text>
+          <ion-text color="primary">
+            {{propiedad.dni_propietario}}
+          </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Teléfono del propietario:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.telf_propietario}}
+        </ion-text>
+      </ion-col>
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Email del propietario:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.email_propietario}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="12" size-xs="12" size-md="12">
+        <ion-text color="medium" >
+          Dirección:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.direccion}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Tipo:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.tipo}}
+        </ion-text>
+      </ion-col>
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Posición GPS:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.gps}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Fecha de construcción:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.fecha_construccion  | date:'yyyy-MM-dd'}}
+        </ion-text>
+      </ion-col>
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Fecha de última reforma:
+        </ion-text>
+        <ion-text color="primary">
+          {{propiedad.fecha_ultima_reforma  | date:'yyyy-MM-dd'}}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-lg="12" size-xs="12" size-md="12">
+        <ion-text color="medium" class="nota">Ref: </ion-text>
+        <ion-text color="primary" class="nota" >{{propiedad.id}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item-divider color="secondary">
+    <ion-label>
+      Plantas
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let p of propiedad.plantas" routerLink="planta/{{p.id}}">
+      <ion-label>Planta {{p.numero}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="secondary" (click)="addPlanta()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

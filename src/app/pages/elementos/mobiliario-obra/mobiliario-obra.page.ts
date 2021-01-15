@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MobiliarioObra } from 'src/app/models/estancia/mobiliario-obra';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
 
@@ -10,26 +10,28 @@ import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.ser
 })
 export class MobiliarioObraPage implements OnInit {
 
-  @Input() s_planta: number;
-  @Input() s_estancia: number;
-
+  
   public mobiliario_obra: MobiliarioObra;
+  public idPropiedad: string;
+  public idPlanta: string;
+  public idEstancia: string;
 
   constructor(
     private presupuestoService: PresupuestoService,
-    private modalCtrl: ModalController
+    private rutaActiva: ActivatedRoute
   ) {
     this.mobiliario_obra = new MobiliarioObra();
   }
 
   ngOnInit() {
-    this.mobiliario_obra = <MobiliarioObra>this.presupuestoService.getElemento(this.s_planta, this.s_estancia, "mobiliario_obra", "");
+    this.rutaActiva.paramMap.subscribe( params => {
+      this.idPropiedad = params.get('id1');
+      this.idPlanta = params.get('id2');
+      this.idEstancia = params.get('id3');
+    });
+    this.mobiliario_obra = <MobiliarioObra>this.presupuestoService.getElementoById(this.idPropiedad, this.idPlanta, this.idEstancia, "", "mobiliario_obra");
   }
 
-  cerrarModal(){
-    this.modalCtrl.dismiss({
-      //s_propiedad: this.propiedad
-    });
-  }
+  
 
 }

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Planta {{planta.numero}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="editPlanta()">
+        <ion-icon slot="icon-only"name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed class="ion-padding">
+    <ion-row class="ion-align-items-center" >
+      <ion-text color="primary" class="nota" routerLink="../../../../../../propiedad/{{idPropiedad}}">Propiedad </ion-text>
+      <ion-text color="primary" class="nota" >&nbsp;&nbsp;>&nbsp;&nbsp;</ion-text>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-text color="medium" >
+          Nombre:
+        </ion-text>
+        <ion-text color="primary">
+          {{planta.nombre}}
+        </ion-text>
+      </ion-col>
+      <ion-col size-lg="6" size-xs="6" size-md="6">
+        <ion-row>
+          <ion-text color="medium" >
+            Número:
+          </ion-text>
+          <ion-text color="primary">
+            {{planta.numero}}
+          </ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-lg="12" size-xs="12" size-md="12">
+        <ion-text color="medium" class="nota">Ref: </ion-text>
+        <ion-text color="primary" class="nota" >{{planta.id}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-item-divider color="secondary">
+    <ion-label>
+      Estancias
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let e of planta.estancias" routerLink="estancia/{{e.id}}">
+      <ion-label>Estancia {{e.numero}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="secondary" (click)="addEstancia()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+

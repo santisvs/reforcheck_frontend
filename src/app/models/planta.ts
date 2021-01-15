@@ -12,5 +12,4 @@ export class Planta {
         this.numero = 0;
         this.estancias = [];
     }
-    
 }

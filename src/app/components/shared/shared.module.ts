@@ -2,16 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header/header.component';
-import { VariablesComponent } from './variables/variables.component';
-import { SelectElementosComponent } from './select-elementos/select-elementos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    VariablesComponent,
-    SelectElementosComponent
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -20,9 +16,7 @@ import { IonicModule } from '@ionic/angular';
     IonicModule
   ],
   exports:[
-    HeaderComponent,
-    VariablesComponent,
-    SelectElementosComponent
+    HeaderComponent
   ]
 })
 export class SharedModule { }

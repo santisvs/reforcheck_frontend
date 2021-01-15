@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { Estancia } from 'src/app/models/estancia';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Ventana } from 'src/app/models/estancia/ventana';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
 
@@ -11,26 +10,26 @@ import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.ser
 })
 export class VentanaPage implements OnInit {
 
-  @Input() s_planta: number;
-  @Input() s_estancia: number;
-  @Input() s_id: number;
-
   public ventana: Ventana;
+  public idPropiedad: string;
+  public idPlanta: string;
+  public idEstancia: string;
+  public idElemento: string;
 
   constructor(
     private presupuestoService: PresupuestoService,
-    private modalCtrl: ModalController
+    private rutaActiva: ActivatedRoute
   ) {
     this.ventana = new Ventana();
   }
 
   ngOnInit() {
-    this.ventana = <Ventana>this.presupuestoService.getElemento(this.s_planta, this.s_estancia, "ventana", this.s_id);
-  }
-
-  cerrarModal(){
-    this.modalCtrl.dismiss({
-      //s_propiedad: this.propiedad
+    this.rutaActiva.paramMap.subscribe( params => {
+      this.idPropiedad = params.get('id1');
+      this.idPlanta = params.get('id2');
+      this.idEstancia = params.get('id3');
+      this.idElemento = params.get('id4');
     });
+    this.ventana = <Ventana>this.presupuestoService.getElementoById(this.idPropiedad, this.idPlanta, this.idEstancia, this.idElemento, "ventana");
   }
 }
