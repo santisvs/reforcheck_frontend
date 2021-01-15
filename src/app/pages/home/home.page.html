@@ -1,0 +1,21 @@
+
+<app-header></app-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-toolbar color="primary">
+    <ion-title>Propiedades</ion-title>
+  </ion-toolbar>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let p of propiedades" routerLink="../propiedad/{{p.id}}">
+      <ion-label>Propiedad {{p.tipo}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="secondary" (click)="addPropiedad()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

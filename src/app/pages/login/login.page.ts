@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
+import { AlertController, NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +13,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  private loginForm: any;
+  
+  constructor(
+    private loginService: LoginService,
+    private formBuilder: FormBuilder,
+    private alertCtrl: AlertController,
+    private storage: Storage,
+    private navCtrl: NavController
+  ) { 
+    this.loginForm = this.formBuilder.group({
+      username: '',
+      password: ''
+    });
+  }
 
   ngOnInit() {
+  }
+
+  async sendLogin(loginData) {
+    if (!loginData.password) {
+      this.presentAlert('Comprobar que los campos obligatorios esten rellenos correctamente');
+    } else {
+      this.loginService.loginUser(loginData).subscribe(
+        (result:any) => {
+          this.saveStorage(result);
+          this.navCtrl.navigateRoot('/home');
+        },
+        error => {
+          this.storage.clear();
+          this.presentAlert("Error en el login. Revise los datos y vuelva a intentarlo");
+        }
+      );
+    }
+  }
+
+  async saveStorage(token){
+          await this.storage.set('access_token', token.access_token);
+          await this.storage.set('type_token', token.token_type);
+          await this.storage.set('refresh_token', token.refresh_token);
+  }
+
+  async presentAlert(texto: any) {
+    const alert = await this.alertCtrl.create({
+      message: '',
+      subHeader: texto,
+      buttons: ['Ok']
+    });
+    await alert.present();
   }
 
 }

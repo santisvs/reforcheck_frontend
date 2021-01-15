@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Crear elementos
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #fAddElementos="ngForm" (ngSubmit)="addElementos()">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label>Mobiliario de Obra</ion-label>
+        <ion-toggle color="secondary" slot="start" name="mobiliario_obra" [(ngModel)]="elementos.mobiliario_obra"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Techo</ion-label>
+        <ion-toggle color="secondary" slot="start" name="techo" [(ngModel)]="elementos.techo"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Revestimiento</ion-label>
+        <ion-toggle color="secondary" slot="start" name="revestimiento" [(ngModel)]="elementos.revestimiento">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Solado</ion-label>
+        <ion-toggle color="secondary" slot="start" name="solado" [(ngModel)]="elementos.solado">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Rodapie</ion-label>
+        <ion-toggle color="secondary" slot="start" name="rodapie" [(ngModel)]="elementos.rodapie">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pintura</ion-label>
+        <ion-toggle color="secondary" slot="start" name="pintura" [(ngModel)]="elementos.pintura">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Instalacion</ion-label>
+        <ion-toggle color="secondary" slot="start" name="instalacion" [(ngModel)]="elementos.instalacion">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Iluminacion</ion-label>
+        <ion-toggle color="secondary" slot="start" name="iluminacion" [(ngModel)]="elementos.iluminacion">></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ventanas</ion-label>
+        <ion-input type="number" name="ventanas" [(ngModel)]="elementos.ventanas"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Puertas</ion-label>
+        <ion-input type="number" name="puertas" [(ngModel)]="elementos.puertas"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Armarios</ion-label>
+        <ion-input type="number" name="armarios" [(ngModel)]="elementos.armarios"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Radiadores</ion-label>
+        <ion-input type="number" name="radiadores" [(ngModel)]="elementos.radiadores"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Climatizacion</ion-label>
+        <ion-input type="number" name="climatizacion" [(ngModel)]="elementos.climatizacion"></ion-input>
+      </ion-item>
+  <div *ngIf="estancia.tipo === 'humeda'">
+        <ion-item>
+          <ion-label>Baneras</ion-label>
+          <ion-input type="number" name="baneras" [(ngModel)]="elementos.baneras"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Duchas</ion-label>
+          <ion-input type="number" name="duchas" [(ngModel)]="elementos.duchas"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Lavabos</ion-label>
+          <ion-input type="number" name="lavabos" [(ngModel)]="elementos.lavabos"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Inodoros</ion-label>
+          <ion-input type="number" name="inodoros" [(ngModel)]="elementos.inodoros"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Bidets</ion-label>
+          <ion-input type="number" name="bidets" [(ngModel)]="elementos.bidets"></ion-input>
+        </ion-item>
+        </div>
+    </ion-list>
+    <ion-button color="secondary" type=submit>
+      <ion-icon slot="start" name="add"></ion-icon>
+      Añadir
+    </ion-button>
+    
+    </form>
+</ion-content>
+
