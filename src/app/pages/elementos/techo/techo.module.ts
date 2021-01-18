@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TechoPageRoutingModule } from './techo-routing.module';
 
 import { TechoPage } from './techo.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TechoPageRoutingModule
+    TechoPageRoutingModule,
+    ElementosModule
   ],
   declarations: [TechoPage]
 })

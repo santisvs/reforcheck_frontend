@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { IluminacionPageRoutingModule } from './iluminacion-routing.module';
 
 import { IluminacionPage } from './iluminacion.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IluminacionPageRoutingModule
+    IluminacionPageRoutingModule,
+    ElementosModule
   ],
   declarations: [IluminacionPage]
 })

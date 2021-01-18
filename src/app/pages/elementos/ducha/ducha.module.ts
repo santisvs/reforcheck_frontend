@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DuchaPageRoutingModule } from './ducha-routing.module';
 
 import { DuchaPage } from './ducha.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DuchaPageRoutingModule
+    DuchaPageRoutingModule,
+    ElementosModule
   ],
   declarations: [DuchaPage]
 })

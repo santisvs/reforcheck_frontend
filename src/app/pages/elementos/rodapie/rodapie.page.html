@@ -1,14 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Rodapie</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Rodapie"></app-cabecera>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-input type="text" name="tipo" [(ngModel)]="rodapie.tipo" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Alto</ion-label>
+      <ion-input type="number" name="alto" [(ngModel)]="rodapie.alto.tamano" required></ion-input>
+      <ion-label position="floating">Unidad</ion-label>
+      <ion-select value="0" interface="popover" name="unidad" [(ngModel)]="rodapie.alto.unidad" required>
+        <ion-select-option value="0">Sin definir</ion-select-option>
+        <ion-select-option value="2">Metros</ion-select-option>
+        <ion-select-option value="3">Centimetros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Largo</ion-label>
+      <ion-input type="number" name="largo" [(ngModel)]="rodapie.largo.tamano" required></ion-input>
+      <ion-label position="floating">Unidad</ion-label>
+      <ion-select value="0" interface="popover" name="unidad" [(ngModel)]="rodapie.largo.unidad" required>
+        <ion-select-option value="0">Sin definir</ion-select-option>
+        <ion-select-option value="2">Metros</ion-select-option>
+        <ion-select-option value="3">Centimetros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ancho</ion-label>
+      <ion-input type="number" name="ancho" [(ngModel)]="rodapie.ancho.tamano" required></ion-input>
+      <ion-label position="floating">Unidad</ion-label>
+      <ion-select value="0" interface="popover" name="unidad" [(ngModel)]="rodapie.ancho.unidad" required>
+        <ion-select-option value="0">Sin definir</ion-select-option>
+        <ion-select-option value="2">Metros</ion-select-option>
+        <ion-select-option value="3">Centimetros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-observaciones [elemento] = "rodapie"></app-observaciones>
+    <app-fabricante [elemento] = "rodapie"></app-fabricante>
+  </ion-list>
 
 </ion-content>

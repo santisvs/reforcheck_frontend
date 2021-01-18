@@ -1,14 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Revestimiento</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Revestimiento"></app-cabecera>
 
-<ion-content>
-  FALTA
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <app-medida2d [elemento] = "revestimiento.medida"></app-medida2d>
+    <ion-item>
+      <ion-label>Cerámico</ion-label>
+      <ion-toggle slot="start" name="ceramico" [(ngModel)]="revestimiento.ceramico"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Friso</ion-label>
+      <ion-toggle slot="start" name="friso" [(ngModel)]="revestimiento.friso"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Panelado</ion-label>
+      <ion-toggle slot="start" name="panelado" [(ngModel)]="revestimiento.panelado"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Moldura</ion-label>
+      <ion-toggle slot="start" name="moldura" [(ngModel)]="revestimiento.moldura"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Demuele</ion-label>
+      <ion-toggle slot="start" name="demuele" [(ngModel)]="revestimiento.demuele"></ion-toggle>
+    </ion-item>
+    <app-observaciones [elemento] = "revestimiento"></app-observaciones>
+    <app-fabricante [elemento] = "revestimiento"></app-fabricante>
+  </ion-list>
 </ion-content>

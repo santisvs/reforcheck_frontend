@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ArmarioPageRoutingModule } from './armario-routing.module';
 
 import { ArmarioPage } from './armario.page';
+import { SharedModule } from 'src/app/components/shared/shared.module';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArmarioPageRoutingModule
+    ArmarioPageRoutingModule,
+    ElementosModule
   ],
   declarations: [ArmarioPage]
 })

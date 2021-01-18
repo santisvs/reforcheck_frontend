@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RadiadorPageRoutingModule } from './radiador-routing.module';
 
 import { RadiadorPage } from './radiador.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RadiadorPageRoutingModule
+    RadiadorPageRoutingModule,
+    ElementosModule
   ],
   declarations: [RadiadorPage]
 })

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SoladoPageRoutingModule } from './solado-routing.module';
 
 import { SoladoPage } from './solado.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SoladoPageRoutingModule
+    SoladoPageRoutingModule,
+    ElementosModule
   ],
   declarations: [SoladoPage]
 })

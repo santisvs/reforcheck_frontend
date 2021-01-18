@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LavaboPageRoutingModule } from './lavabo-routing.module';
 
 import { LavaboPage } from './lavabo.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LavaboPageRoutingModule
+    LavaboPageRoutingModule,
+    ElementosModule
   ],
   declarations: [LavaboPage]
 })

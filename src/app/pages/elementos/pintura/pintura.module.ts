@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PinturaPageRoutingModule } from './pintura-routing.module';
 
 import { PinturaPage } from './pintura.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PinturaPageRoutingModule
+    PinturaPageRoutingModule,
+    ElementosModule
   ],
   declarations: [PinturaPage]
 })

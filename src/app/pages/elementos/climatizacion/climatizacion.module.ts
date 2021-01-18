@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ClimatizacionPageRoutingModule } from './climatizacion-routing.module';
 
 import { ClimatizacionPage } from './climatizacion.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClimatizacionPageRoutingModule
+    ClimatizacionPageRoutingModule,
+    ElementosModule
   ],
   declarations: [ClimatizacionPage]
 })

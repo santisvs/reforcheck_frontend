@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RevestimientoPageRoutingModule } from './revestimiento-routing.module';
 
 import { RevestimientoPage } from './revestimiento.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RevestimientoPageRoutingModule
+    RevestimientoPageRoutingModule,
+    ElementosModule
   ],
   declarations: [RevestimientoPage]
 })

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PuertaPageRoutingModule } from './puerta-routing.module';
 
 import { PuertaPage } from './puerta.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PuertaPageRoutingModule
+    PuertaPageRoutingModule,
+    ElementosModule
   ],
   declarations: [PuertaPage]
 })

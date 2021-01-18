@@ -1,14 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Iluminación</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Iluminación"></app-cabecera>
 
-<ion-content>
-  FALTA
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label>Empotrada</ion-label>
+      <ion-toggle slot="start" name="mampara" [(ngModel)]="iluminacion.empotrada"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Focos</ion-label>
+      <ion-input type="number" name="focos" [(ngModel)]="iluminacion.focos" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Down lights</ion-label>
+      <ion-input type="number" name="down_lights" [(ngModel)]="iluminacion.down_lights" required></ion-input>
+    </ion-item>
+    <app-tramos [elemento]="iluminacion" tipo="led"></app-tramos>
+    <app-observaciones [elemento] = "iluminacion"></app-observaciones>
+    <app-fabricante [elemento] = "iluminacion"></app-fabricante>
+  </ion-list>
 </ion-content>

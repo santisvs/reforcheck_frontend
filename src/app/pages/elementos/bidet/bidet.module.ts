@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BidetPageRoutingModule } from './bidet-routing.module';
 
 import { BidetPage } from './bidet.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BidetPageRoutingModule
+    BidetPageRoutingModule,
+    ElementosModule
   ],
   declarations: [BidetPage]
 })

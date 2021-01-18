@@ -1,14 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Pintura</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Pintura"></app-cabecera>
 
-<ion-content>
-  FALTA
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Color</ion-label>
+      <ion-input type="text" name="color" [(ngModel)]="pintura.color" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Acabado</ion-label>
+      <ion-input type="text" name="acabado" [(ngModel)]="pintura.acabado" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fisuración</ion-label>
+      <ion-select value="0" interface="popover" name="fisuracion" [(ngModel)]="pintura.fisuracion" required>
+        <ion-select-option value="0">Sin definir</ion-select-option>
+        <ion-select-option value="1">Bajo</ion-select-option>
+        <ion-select-option value="2">Medio</ion-select-option>
+        <ion-select-option value="3">Alto</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Papel pintado</ion-label>
+      <ion-toggle slot="start" name="papel_pintado" [(ngModel)]="pintura.papel_pintado"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gotelet</ion-label>
+      <ion-toggle slot="start" name="gotelet" [(ngModel)]="pintura.gotelet"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Raspado</ion-label>
+      <ion-toggle slot="start" name="raspado" [(ngModel)]="pintura.raspado"></ion-toggle>
+    </ion-item>
+    
+    <app-observaciones [elemento] = "pintura"></app-observaciones>
+    <app-fabricante [elemento] = "pintura"></app-fabricante>
+  </ion-list>
 </ion-content>

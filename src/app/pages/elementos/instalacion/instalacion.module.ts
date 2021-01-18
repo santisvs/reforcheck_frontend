@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { InstalacionPageRoutingModule } from './instalacion-routing.module';
 
 import { InstalacionPage } from './instalacion.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InstalacionPageRoutingModule
+    InstalacionPageRoutingModule,
+    ElementosModule
   ],
   declarations: [InstalacionPage]
 })

@@ -1,14 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Solado</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Solado"></app-cabecera>
 
-<ion-content>
-  FALTA
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-input type="text" name="tipo" [(ngModel)]="solado.tipo" required></ion-input>
+    </ion-item>
+    <app-medida2d [elemento] = "solado.medida"></app-medida2d>
+    <app-observaciones [elemento] = "solado"></app-observaciones>
+    <app-fabricante [elemento] = "solado"></app-fabricante>
+  </ion-list>
 </ion-content>

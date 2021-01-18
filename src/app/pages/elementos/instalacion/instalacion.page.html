@@ -1,14 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-buttons>
-    <ion-title>Instalacion</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera titulo = "Instalación"></app-cabecera>
 
-<ion-content>
-  FALTA
+<ion-content class="ion-padding"> 
+  <ion-list lines="full">
+    <app-medida2d [elemento] = "instalacion.medida"></app-medida2d>
+    <ion-item>
+      <ion-label position="floating">Cajas de registro</ion-label>
+      <ion-input type="number" name="caja_registro" [(ngModel)]="instalacion.caja_registro" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Interruptores conmutados</ion-label>
+      <ion-input type="number" name="interruptores_conmutados" [(ngModel)]="instalacion.interruptores_conmutados" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Interruptores no conmutados</ion-label>
+      <ion-input type="number" name="interruptores_no_conmutados" [(ngModel)]="instalacion.interruptores_no_conmutados" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Enchufes</ion-label>
+      <ion-input type="number" name="enchufes" [(ngModel)]="instalacion.enchufes" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tomas de TV</ion-label>
+      <ion-input type="number" name="toma_tv" [(ngModel)]="instalacion.toma_tv" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tomas de teléfono</ion-label>
+      <ion-input type="number" name="toma_telef" [(ngModel)]="instalacion.toma_telef" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tomas de datos</ion-label>
+      <ion-input type="number" name="toma_datos" [(ngModel)]="instalacion.toma_datos" required></ion-input>
+    </ion-item>
+    <app-observaciones [elemento] = "instalacion"></app-observaciones>
+    <app-fabricante [elemento] = "instalacion"></app-fabricante>
+  </ion-list>
 </ion-content>

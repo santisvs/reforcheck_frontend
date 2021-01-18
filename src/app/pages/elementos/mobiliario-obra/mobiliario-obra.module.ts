@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MobiliarioObraPageRoutingModule } from './mobiliario-obra-routing.module';
 
 import { MobiliarioObraPage } from './mobiliario-obra.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MobiliarioObraPageRoutingModule
+    MobiliarioObraPageRoutingModule,
+    ElementosModule
   ],
   declarations: [MobiliarioObraPage]
 })

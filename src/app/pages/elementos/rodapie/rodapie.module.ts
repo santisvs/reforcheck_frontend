@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RodapiePageRoutingModule } from './rodapie-routing.module';
 
 import { RodapiePage } from './rodapie.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RodapiePageRoutingModule
+    RodapiePageRoutingModule,
+    ElementosModule
   ],
   declarations: [RodapiePage]
 })

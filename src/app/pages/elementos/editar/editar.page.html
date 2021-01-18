@@ -14,7 +14,7 @@
 <ion-content class="ion-padding">
   <form #fEditPropiedad="ngForm">
   <div *ngIf="s_tipo === 'propiedad'">
-      <ion-list>
+      <ion-list lines="full">
         <ion-item>
           <ion-label position="floating">Nombre del propietario</ion-label>
           <ion-input type="name" name="nombre_propietario" [(ngModel)]="propiedad.nombre_propietario" required></ion-input>
@@ -59,7 +59,7 @@
       </ion-list>
   </div>
   <div *ngIf="s_tipo === 'planta'">
-      <ion-list>
+      <ion-list lines="full">
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
           <ion-input type="name" name="nombre" [(ngModel)]="planta.nombre" required></ion-input>
@@ -71,7 +71,7 @@
       </ion-list>
   </div>
   <div *ngIf="s_tipo === 'estancia'">
-      <ion-list>
+      <ion-list lines="full">
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
           <ion-input type="text" name="nombre" [(ngModel)]="estancia.nombre" required></ion-input>

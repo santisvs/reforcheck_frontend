@@ -1,0 +1,42 @@
+<ion-item-divider color="secondary">
+  <div *ngIf="tipo === 'led'">
+    <ion-label>
+      Tiras de led
+    </ion-label>
+    <ion-button size="small" (click)="crearTramo()">
+      <ion-icon name="add-outline"></ion-icon>
+        Añadir led
+    </ion-button>
+  </div>
+  <div *ngIf="tipo === 'tramo'">
+    <ion-label>
+      Tramos
+    </ion-label>
+    <ion-button size="small" (click)="crearTramo()">
+      <ion-icon name="add-outline"></ion-icon>
+        Añadir tramo
+    </ion-button>
+  </div>
+</ion-item-divider>
+<ion-list>
+  <ion-item *ngFor="let tramo of elemento.tramos; let i = index">
+    <div *ngIf="tipo === 'led'">
+      <ion-label>
+        Tiras de led {{i+1}}
+      </ion-label>
+    </div>
+    <div *ngIf="tipo === 'tramo'">
+      <ion-label>
+        <ion-label>Tramo {{i+1}}</ion-label>
+      </ion-label>
+    </div>
+    
+    <ion-input type="number" name="tamano" [(ngModel)]="tramo.tamano" required></ion-input>
+    <ion-label position="floating">Unidad</ion-label>
+      <ion-select value="0" interface="popover" name="unidad" [(ngModel)]="tramo.unidad" required>
+        <ion-select-option value="0">Sin definir</ion-select-option>
+        <ion-select-option value="2">Metros</ion-select-option>
+        <ion-select-option value="3">Centimetros</ion-select-option>
+      </ion-select>
+  </ion-item>
+</ion-list>

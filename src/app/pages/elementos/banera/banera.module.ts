@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BaneraPageRoutingModule } from './banera-routing.module';
 
 import { BaneraPage } from './banera.page';
+import { ElementosModule } from 'src/app/components/elementos/elementos.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BaneraPageRoutingModule
+    BaneraPageRoutingModule,
+    ElementosModule
   ],
   declarations: [BaneraPage]
 })

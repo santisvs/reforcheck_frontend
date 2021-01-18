@@ -26,6 +26,7 @@ export class PropiedadPage implements OnInit {
       this.idPropiedad = params.get('id1');
     });
     this.propiedad = this.presupuestoService.getPropiedadById(this.idPropiedad);
+    console.log(this.propiedad);
   }
 
   addPlanta(){
