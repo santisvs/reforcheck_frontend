@@ -7,3 +7,7 @@
   .collapsed {
     max-height: 0 !important;
   }
+
+.max-width-menu{
+  width: calc(100% - 70px) !important;
+}

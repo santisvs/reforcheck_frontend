@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
     if (!loginData.password) {
       this.presentAlert('Comprobar que los campos obligatorios esten rellenos correctamente');
     } else {
-      this.loginService.loginUser(loginData).subscribe(
+      /*this.loginService.loginUser(loginData).subscribe(
         (result:any) => {
           this.saveStorage(result);
           this.navCtrl.navigateRoot('/home');
@@ -44,14 +44,25 @@ export class LoginPage implements OnInit {
           this.storage.clear();
           this.presentAlert("Error en el login. Revise los datos y vuelva a intentarlo");
         }
-      );
+      );*/
+
+      let result = this.loginService.loginUser(loginData);
+      if(true){
+        this.navCtrl.navigateRoot('/');
+      } else {
+        this.presentAlert("Login incorrecto");
+      }
+      
     }
   }
 
   async saveStorage(token){
-          await this.storage.set('access_token', token.access_token);
+          /*await this.storage.set('access_token', token.access_token);
           await this.storage.set('type_token', token.token_type);
-          await this.storage.set('refresh_token', token.refresh_token);
+          await this.storage.set('refresh_token', token.refresh_token);*/
+          await localStorage.setItem('access_token', token.access_token);
+          await localStorage.setItem('type_token', token.token_type);
+          await localStorage.setItem('access_token', token.refresh_token);
   }
 
   async presentAlert(texto: any) {

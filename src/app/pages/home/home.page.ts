@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Propiedad } from '../../models/propiedad';
 import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.service';
+import { CommonsService } from 'src/app/services/commons/commons.service';
+import { Observable } from 'rxjs';
+import { OpcionMenu } from 'src/app/models/interfaces/opcion-menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,23 +14,42 @@ import { PresupuestoService } from 'src/app/services/presupuesto/presupuesto.ser
 export class HomePage implements OnInit  {
 
   public propiedades: Array<Propiedad>;
-  public title: string;
+  opcionesMenu : Observable<OpcionMenu[]>;
+  enVista: string;
+  usuario: string;
   
 
   constructor(
-    private presupuestoService: PresupuestoService
+    private commonsService:CommonsService,
+    private presupuestoService: PresupuestoService,
+    private router: Router
   ) {
-    this.title = "Datos de la propiedad";
     this.propiedades = this.presupuestoService.getAllPropiedades();
   }
 
   ngOnInit() {
-    console.log("Registrar una propiedad");
+    this.usuario = localStorage.getItem('type_token');
+    this.enVista = "home";
+    this.opcionesMenu = this.commonsService.getMenuOpciones();
   }
 
-  addPropiedad(){
+  addPresupuesto(){
     this.propiedades = this.presupuestoService.addPropiedad();
-    console.log(this.propiedades);
+  }
+
+  mostrarContenidoMenu(opcion: string){
+      if(opcion=="usuario"){
+        this.enVista = "usuario";
+      }
+      if(opcion=="Presupuesto"){
+        this.enVista = "presupuesto";
+      }
+      if(opcion=="Home"){
+        this.enVista = "home";
+      }
+      if(opcion=="Salir"){
+        this.router.navigate(['login']);
+      }
   }
   
 

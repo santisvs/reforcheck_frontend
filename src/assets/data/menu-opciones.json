@@ -1,0 +1,19 @@
+[
+    {
+        "icon": "home-outline",
+        "name": "Home",
+        "redirectTo": "/"
+        
+    },
+    {
+        "icon": "wallet-outline",
+        "name": "Presupuesto",
+        "redirectTo": "/presupuesto"
+        
+    },
+    {
+        "icon": "log-out-outline",
+        "name": "Salir",
+        "redirectTo": "/login"
+    }
+]

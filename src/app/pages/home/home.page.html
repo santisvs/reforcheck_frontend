@@ -1,21 +1,71 @@
-
 <app-header></app-header>
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+     
+        <ion-img size="small" src="assets/logo_reforcheck.png"></ion-img>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="ion-padding" (click)="mostrarContenidoMenu('usuario')">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-avatar>
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="6">
+            {{usuario}}
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </div>
+    
+    <ion-list>
+      <ion-menu-toggle *ngFor="let opcion of opcionesMenu | async">
+        <ion-item (click)="mostrarContenidoMenu(opcion.name)" detail >
+          <ion-icon [name]="opcion.icon" slot="start"></ion-icon>
+          {{opcion.name}}
+        </ion-item>
+      </ion-menu-toggle>
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <ion-toolbar color="primary">
-    <ion-title>Propiedades</ion-title>
-  </ion-toolbar>
+  <div *ngIf="enVista=='usuario'">
+    USUARIO
+  </div>
+  
+  
 
-  <ion-list lines="full">
-    <ion-item *ngFor="let p of propiedades" routerLink="../propiedad/{{p.id}}">
-      <ion-label>Propiedad {{p.tipo}}</ion-label>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="enVista=='home'">
+    HOME
+  </div>
 
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="secondary" (click)="addPropiedad()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <div *ngIf="enVista=='presupuesto'">
+    <ion-toolbar color="primary">
+      <ion-title>Presupuestos</ion-title>
+    </ion-toolbar>
+    
+    <ion-list lines="full">
+      <ion-item *ngFor="let p of propiedades" routerLink="propiedad/{{p.id}}">
+        <ion-label>Presupuesto {{p.tipo}}</ion-label>
+      </ion-item>
+    </ion-list>
+    
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+      <ion-fab-button color="secondary" (click)="addPresupuesto()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  
 
+  
+  
 </ion-content>
